@@ -73,3 +73,6 @@ Figma：https://www.figma.com/file/iF6DVnaQUygmykpU3TlubO/%E7%84%A1%E9%A1%8C?typ
 
 ### 想定URL
 - [ ] 特に記載していない or 特に違和感を感じなかった
+
+### ER　図
+- https://i.gyazo.com/2eec6846eb6ba18f5706acafddd5ad0d.png

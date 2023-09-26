@@ -75,4 +75,4 @@ Figma：https://www.figma.com/file/iF6DVnaQUygmykpU3TlubO/%E7%84%A1%E9%A1%8C?typ
 - [ ] 特に記載していない or 特に違和感を感じなかった
 
 ### ER　図
-- https://i.gyazo.com/939b5f5a60869d927ae8d4314e062a60.png
+- https://i.gyazo.com/b8469177c10cc365d954d5f4aa6e5304.png

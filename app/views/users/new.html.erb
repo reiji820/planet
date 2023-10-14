@@ -1,0 +1,31 @@
+<div class="card-form pb-4 px-3">
+  <div class="container">
+    <div class="row p-5">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
+        <h1 align="center">新規登録</h1>
+        <%= form_with model: @user, local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "ユーザー名" %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード（確認用）" %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+          <%= f.submit '登録', class: 'btn btn-primary' %>
+        <% end %>
+        <div class='text-center'>
+          <%= link_to 'ログインページへ', login_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

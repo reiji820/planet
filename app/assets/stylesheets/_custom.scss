@@ -1,0 +1,36 @@
+// SignUpページ、ログインページ
+.card-form {
+  background-color: lightgray;
+
+  &-content {
+    border-radius: 25px;
+    background-color: #fff;
+  }
+}
+
+// フッター
+.footer {
+  
+  &-li {
+    list-style: none;
+  }
+
+  &-link {
+    color: gray;
+    text-decoration: none;
+    font-size: 0.84em;
+    transition-property: color;
+    transition-duration: .2s;
+    display: block;
+    margin: 0 10px;
+
+    &:hover {
+      color: rgb(103, 103, 103) !important;
+    }
+  }
+  
+  &-copyright {
+    color: gray;
+    font-size: 0.84em;
+  }
+}

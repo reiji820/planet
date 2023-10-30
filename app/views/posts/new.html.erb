@@ -1,0 +1,37 @@
+<div class="card-form pb-4 px-3">
+  <div class="container">
+    <div class="row p-5">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
+        <h1 align="center">投稿登録</h1>
+        <%= form_with model: @post, local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :タイトル %>
+            <%= f.text_area :title, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :時間帯 %><br>
+            <%= f.time_field :start_time, prompt:true, ignore_data:true, class: 'form-control' %>〜
+            <%= f.time_field :end_time, prompt:true, ignore_data:true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :予算 %>
+            <%= f.text_field :budget, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :画像 %><br>
+            <%= f.file_field :image, class: "image" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :都道府県 %><br>
+            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :季節 %><br>
+            <%= f.select :season, Post.seasons.keys, {prompt: "選択してください"}, class: 'form-control' %><br>
+          </div>
+          <%= f.submit '投稿', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

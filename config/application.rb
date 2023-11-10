@@ -29,7 +29,7 @@ module CheckList
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    config.time_zone = "Tokyo"
+    config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
     # config.eager_load_paths << Rails.root.join("extras")

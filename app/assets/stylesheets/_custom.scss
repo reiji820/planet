@@ -34,3 +34,41 @@
     font-size: 0.84em;
   }
 }
+
+// ユーザーのボタンurl
+.user-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+// 投稿詳細タイトル表示
+.show-card{
+  height: 200px;
+}
+
+.show-text-start{
+  font-size: 20px;
+}
+
+// 投稿詳細画面
+.circle{
+  width: 60px;
+  height: 24px;
+  border-radius: 12px;
+  background: gainsboro;
+}
+
+.time{
+  position: relative;
+  left: 5px;
+}
+
+.budget{
+  position: relative;
+  left: 12px;
+}
+
+.plan-card{
+  background-color: lightpink;
+}

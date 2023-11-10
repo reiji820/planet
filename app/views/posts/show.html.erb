@@ -1,0 +1,80 @@
+<div class="container-fluid px-5 mt-5">
+  <div class="row">
+    <div class="col-xl-8">
+      <div class="card bg-light">
+        <div class="d-flex justify-content-between">
+          <div class="p-2">
+            <h3 class="font-italic">Plan Details</h3>
+          </div>
+          <div class="user-btn align-self-center">
+              <%= link_to @post.user.name, '#' %>
+          </div>
+        </div><br>
+
+        <div class="d-flex justify-content-center">
+          <div class="show-card border w-75 bg-white">
+            <p class="show-text-start mt-2 mx-3">
+              <%= @post.title %>
+            </p>
+          </div>
+        </div><br>
+
+        <div class="d-flex justify-content-center">
+          <div class="time-zone-display w-75 d-inline-flex">
+            <div class="circle">
+              <span class="time font-italic">
+                時間帯
+              </span>
+            </div>
+
+            <div class="time-display">
+              <%= l @post.start_time, format: :short %>~
+              <%= l @post.end_time, format: :short %>頃
+            </div>
+          </div>
+        </div><br>
+
+        <div class="d-flex justify-content-center">
+          <div class="budget-display w-75 d-inline-flex">
+            <div class="circle">
+              <span class="budget font-italic">
+                予算
+              </span>
+            </div>
+
+            <div class="budget-display">
+              <%= @post.budget %>
+            </div>
+          </div>
+        </div><br><br><br>
+
+      </div>
+    </div>
+
+    <div class="col-xl-4">
+      <div class="plan-card d-flex flex-column">
+        <div class="p-2">
+          <h3 class="font-italic">Time Schedule</h3>
+        </div>
+
+        <%= render partial: "posts/schedule", collection: @schedules %>
+
+        <div class="plan-form">
+          <%= form_with(model: [@post, @schedule], class: 'js-form') do |f| %>
+            <div class="p-2">
+              <%= f.label :時刻 %><br>
+              <%= f.time_field :time_stamp, prompt:true, ignore_data:true, class: 'form-control' %>
+            </div>
+            <div class="p-2">
+              <%= f.label :予定 %>
+              <%= f.text_area :plan, class: 'form-control' %>
+            </div>
+            <div class="p-2">
+              <%= f.submit '追加', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

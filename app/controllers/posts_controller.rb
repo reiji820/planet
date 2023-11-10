@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
   def new
     @post = Post.new
     @address = Prefecture.all
@@ -10,7 +11,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = @current_user.id
     if @post.save
       redirect_to root_path
     else
@@ -18,9 +18,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @schedule = TimeSchedule.new
+    @schedules = TimeSchedule.where(post_id: params[:id])
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :prefecture_id, :season)
+    params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id, :season).merge(user_id: @current_user.id)
   end
 end

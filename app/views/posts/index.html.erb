@@ -1,1 +1,21 @@
-<h1>a</h1>
+<div class="container-fluid px-5 mt-5">
+  <div class="row"> 
+    <% @posts.each do |post| %>
+      <div class="col-xl-3 col-md-6 mt-5">
+        <div class="card h-100">
+          <%= image_tag(post.image.url, class: "card-img-top h-50") %>
+          <div class="card-body">
+            <p class="card-text">
+              <%= link_to post.title, post_path(post) %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="text-right">
+              <%= link_to post.user.name, '#' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %> 
+  </div>
+</div>

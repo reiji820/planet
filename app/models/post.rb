@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :time_schedules
 
   mount_uploader :image, ImageUploader
 

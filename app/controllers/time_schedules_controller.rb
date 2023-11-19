@@ -1,4 +1,6 @@
 class TimeSchedulesController < ApplicationController
+  protect_from_forgery :except => [:destroy]
+
   def new; end
 
   def create

@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
+  protect_from_forgery :except => [:destroy]
+
   def new
     @post = Post.new
     @address = Prefecture.all
@@ -22,6 +24,25 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @schedule = TimeSchedule.new
     @schedules = TimeSchedule.where(post_id: params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to request.referer
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path
   end
 
   private

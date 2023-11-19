@@ -42,6 +42,17 @@
   right: 20px;
 }
 
+//　投稿一覧リンク
+.post-link {
+  text-decoration: none;
+  color: black; 
+}
+
+//　投稿一覧ページ
+.post-list-container{
+  background-color: lightgray;
+}
+
 // 投稿詳細タイトル表示
 .show-card{
   height: 200px;
@@ -51,12 +62,28 @@
   font-size: 20px;
 }
 
+.post-detail-title{
+  color: #001f3f;
+}
+
+.time-schedule-title{
+  color: #e74c3c;
+}
+
 // 投稿詳細画面
+.post-detail{
+  background-color: lightgray;
+}
+
+.plan-detail-card{
+  background-color: #b5d0e8;
+}
+
 .circle{
   width: 60px;
   height: 24px;
   border-radius: 12px;
-  background: gainsboro;
+  background: #e0e0e0;
 }
 
 .time{
@@ -69,6 +96,6 @@
   left: 12px;
 }
 
-.plan-card{
-  background-color: lightpink;
+.time-schedule-card{
+  background-color: #f2b3b9;
 }

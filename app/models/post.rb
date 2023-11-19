@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :time_schedules
+  has_many :time_schedules, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 

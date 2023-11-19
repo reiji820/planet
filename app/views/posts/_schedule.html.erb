@@ -1,0 +1,21 @@
+<div class="p-2"  id=<%= "schedule-#{schedule.id}" %>>
+  <div class="schedule-card border bg-white m-2 px-2 pt-2">
+    <p class="time-schedule">
+      <%= l schedule.time_stamp, format: :short %>
+    </p>
+
+    <div class="d-flex justify-content-between"> 
+      <p class="time-schedule">
+        <%= schedule.plan %>
+      </p>
+
+      <% if @post.user == current_user %>
+        <div class="text-inline-item">
+          <%= button_to post_time_schedule_path(@post, schedule), method: :delete, remote: true do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

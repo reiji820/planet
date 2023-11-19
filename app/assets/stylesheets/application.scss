@@ -1,2 +1,7 @@
 @import "custom";
 @import "bootstrap";
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+.container-fluid{
+  font-family: 'Kosugi Maru', sans-serif;
+}

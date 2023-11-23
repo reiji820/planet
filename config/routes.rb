@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :posts do
     resources :time_schedules, only: %i[new create destroy]
   end
+  resource :profile,only: %i[show edit update]
 end

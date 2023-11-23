@@ -1,0 +1,23 @@
+<div class="card-form pb-4 px-3">
+  <div class="container">
+    <div class="row p-5">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
+        <%= form_with model: @user, url: profile_path, local: true do |f| %>
+        <%= f.label :ユーザー名 %>
+        <%= f.text_field :name, class: 'form-control mb-3' %>
+
+        <%= f.label :出身 %>
+        <%= f.text_field :place_of_birth, class: 'form-control mb-3' %>
+
+        <%= f.label :趣味 %>
+        <%= f.text_field :hobbies, class: 'form-control mb-3' %>
+
+        <%= f.label :自己紹介 %>
+        <%= f.text_area :self_introduction, class: 'form-control mb-3' %>
+        
+        <%= f.submit "更新", class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

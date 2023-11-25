@@ -1,4 +1,4 @@
-<header>
+<header class="header">
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <%= link_to root_path, class: 'header-brand' do %>
       <%= image_tag 'linkedin_banner_image_1.png', size: '200x100'%>
@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to 'マイページ', profile_path, class: 'dropdown-item' %>
+          <%= link_to t('defaults.mypage'), profile_path, class: 'dropdown-item' %>
         </li>
         <li class="nav-item">
-          <%= link_to '投稿追加', new_post_path, class: 'dropdown-item' %>
+          <%= link_to t('defaults.PostNew'), new_post_path, class: 'dropdown-item' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+          <%= link_to t('defaults.logout'), logout_path, class: 'dropdown-item', method: :delete %>
         </li>
       </ul>
     </div>

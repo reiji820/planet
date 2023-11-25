@@ -10,7 +10,7 @@
 
             <div class="d-flex right-items">
               <div class="align-self-center mr-3">
-                <%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right mr-3' %>
+                <%= link_to t('.Edit'), edit_profile_path, class: 'btn btn-success float-right mr-3' %>
               </div>
             </div>
           </div>
@@ -18,13 +18,13 @@
           <div class="d-flex justify-content-center">
             <div class="card border w-75 bg-white mb-5">
               <p class="show-text-start mt-2 mx-3">
-                出身：<%= current_user.place_of_birth %>
+                <%= User.human_attribute_name("place_of_birth") %>:<%= current_user.place_of_birth %>
               </p><br>
               <p class="show-text-start mt-2 mx-3">
-                趣味：<%= current_user.hobbies %>
+                <%= User.human_attribute_name("hobbies") %>:<%= current_user.hobbies %>
               </p><br>
               <p class="show-text-start mt-2 mx-3">
-                自己紹介：<%= current_user.self_introduction %>
+                <%= User.human_attribute_name("self_introduction") %>:<%= current_user.self_introduction %>
               </p><br>
             </div>
           </div><br>

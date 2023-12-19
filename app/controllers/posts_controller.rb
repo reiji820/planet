@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(20)
   end
 
   def create
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @schedule = TimeSchedule.new
-    @schedules = TimeSchedule.where(post_id: params[:id])
+    @schedules = TimeSchedule.where(post_id: params[:id]).page(params[:page]).per(10)
   end
 
   def edit

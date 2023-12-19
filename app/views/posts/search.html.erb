@@ -5,7 +5,7 @@
         <h2 class = "text-center pt-5 mx-auto fw-bold"><%= t('.search-none') %></h2>
       <% else %>
         <% @posts.each do |post| %>
-            <div class="col-xl-3 col-md-6 mt-5">
+          <div class="col-xl-3 col-md-6 mt-5">
             <div class="card post-card h-100">
                 <%= image_tag(post.image.url, class: "card-img-block card-img h-50") %>
                 <div class="card-body">
@@ -17,9 +17,11 @@
                     <%= link_to post.user.name, user_path(post.user_id), class: 'post-link' %>
                 </div>
             </div>
-            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
+
+    <%= paginate @posts %>
   </div>
 </div>

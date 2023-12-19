@@ -73,6 +73,8 @@
 
           <%= render partial: "posts/schedule", collection: @schedules %>
 
+          <%= paginate @schedules %>
+
           <% if @post.user == current_user %>
             <div class="plan-form m-2">
               <%= form_with(model: [@post, @schedule], class: 'js-form') do |f| %>

@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー名'
+      post: '投稿'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        name: 'ユーザー名'
+        hobbies: '趣味'
+        place_of_birth: '出身'
+        self_introduction: '自己紹介'
+      post:
+        title: 'タイトル'
+        start_time: '開始時刻'
+        end_time: '終了時刻'
+        budget: '予算'
+        image: 'タイトル画像'
+        prefecture_id: '都道府県'
+        season: '季節'
+      time_schedule:
+        time_stamp: '時刻'
+        plan: '予定'
+        address: '住所'
+        latitude: '緯度'
+        longitude: '経度'

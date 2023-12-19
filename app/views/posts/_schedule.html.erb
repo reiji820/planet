@@ -11,7 +11,7 @@
 
       <% if @post.user == current_user %>
         <div class="text-inline-item">
-          <%= button_to post_time_schedule_path(@post, schedule), method: :delete, remote: true do %>
+          <%= link_to post_time_schedule_path(@post, schedule), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
             <i class="fa-solid fa-trash"></i>
           <% end %>
         </div>

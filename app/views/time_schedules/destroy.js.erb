@@ -1,1 +1,3 @@
-$("#schedule-<%= @schedule.id %>").remove();
+(function(){
+  document.querySelector("#schedule-<%= @schedule.id %>").remove()
+})();

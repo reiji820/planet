@@ -1,3 +1,13 @@
+// 全体フォント
+.header {
+  font-family: 'DotGothic16', sans-serif;
+}
+.container {
+  font-family: 'DotGothic16', sans-serif;
+}
+.container-fluid {
+  font-family: 'DotGothic16', sans-serif;
+}
 // SignUpページ、ログインページ
 .card-form {
   background-color: lightgray;
@@ -98,4 +108,13 @@
 
 .time-schedule-card{
   background-color: #f2b3b9;
+}
+
+//　プロフィール詳細
+.profile-container{
+  background-color: lightgray;
+}
+
+.profile-card{
+  background-color: #b5d0e8;
 }

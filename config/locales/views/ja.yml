@@ -28,6 +28,8 @@ ja:
     show:
       Edit: '編集'
       Destroy: '削除'
+    search:
+      search-none:  '検索結果はありません'
   profiles:
     show:
       Edit: '編集'

@@ -4,6 +4,13 @@
       <%= image_tag 'linkedin_banner_image_1.png', size: '200x100'%>
     <% end %>
 
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form ml-5") do |form| %>
+      <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input ml-5" %>
+      <%= button_tag type: "submit", class: "search-btn" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

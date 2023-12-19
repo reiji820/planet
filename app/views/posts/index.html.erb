@@ -1,20 +1,19 @@
 <div class="post-list-container py-4 px-5 shadow">
-  <div class="container-fluid px-5 my-5">
+  <div class="container-fluid px-5 mb-5">
+    <h3 class='text-center pt-5 mx-auto fw-bold'><%= t('.title') %></h3>
     <div class="row"> 
       <% @posts.each do |post| %>
-        <div class="col-xl-3 col-md-6 col-sm-12 mt-5">
-          <div class="card h-100">
-            <%= image_tag(post.image.url, class: "card-img-top h-50") %>
+        <div class="col-xl-3 col-md-6 mt-5">
+          <div class="card post-card h-100">
+            <%= image_tag(post.image.url, class: "card-img-block card-img h-50") %>
             <div class="card-body">
               <p class="card-text post-title-link">
                 <%= link_to post.title, post_path(post), class: 'post-link' %>
               </p>
             </div>
-            <div class="card-footer">
-              <div class="text-right">
-                <%= link_to post.user.name, '#', class: 'post-link' %>
+              <div class="d-flex justify-content-end m-3">
+                <%= link_to post.user.name, user_path(post.user_id), class: 'post-link' %>
               </div>
-            </div>
           </div>
         </div>
       <% end %> 

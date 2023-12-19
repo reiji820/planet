@@ -9,13 +9,15 @@
             </div>
 
             <div class="d-flex right-items">
-              <div class="align-self-center mr-3">
-                <%= link_to t('.Edit'), edit_post_path(@post) %>
-              </div>
+              <% if @post.user == current_user %>
+                <div class="align-self-center mr-3">
+                  <%= link_to t('.Edit'), edit_post_path(@post) %>
+                </div>
 
-              <div class="align-self-center mr-3">
-                <%= link_to t('.Destroy'), post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
-              </div>
+                <div class="align-self-center mr-3">
+                  <%= link_to t('.Destroy'), post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
+                </div>
+              <% end %>
 
               <div class="align-self-center mr-3">
                   <%= link_to @post.user.name, '#' %>

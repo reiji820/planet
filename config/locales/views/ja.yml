@@ -9,14 +9,20 @@ ja:
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
+    show:
+      Edit: '編集'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
+    show:
+      Edit: '編集'
   posts:
     new:
       title: '投稿登録'
+    index:
+      title: '投稿一覧'
     edit:
       title: '投稿編集'
     show:

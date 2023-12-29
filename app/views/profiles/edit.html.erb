@@ -3,19 +3,20 @@
     <div class="row p-5">
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
         <%= form_with model: @user, url: profile_path, local: true do |f| %>
-        <%= f.label :name, User.model_name.human %>
-        <%= f.text_field :name, class: 'form-control mb-3' %>
+          <%= render 'layouts/error_messages', model: f.object %>
+          <%= f.label :name, User.model_name.human %>
+          <%= f.text_field :name, class: 'form-control mb-3' %>
 
-        <%= f.label :place_of_birth, User.human_attribute_name("place_of_birth") %>
-        <%= f.text_field :place_of_birth, class: 'form-control mb-3' %>
+          <%= f.label :place_of_birth, User.human_attribute_name("place_of_birth") %>
+          <%= f.text_field :place_of_birth, class: 'form-control mb-3' %>
 
-        <%= f.label :hobbies, User.human_attribute_name("hobbies") %>
-        <%= f.text_field :hobbies, class: 'form-control mb-3' %>
+          <%= f.label :hobbies, User.human_attribute_name("hobbies") %>
+          <%= f.text_field :hobbies, class: 'form-control mb-3' %>
 
-        <%= f.label :self_introduction, User.human_attribute_name("self_introduction") %>
-        <%= f.text_area :self_introduction, class: 'form-control mb-3' %>
-        
-        <%= f.submit "更新", class: "btn btn-primary"%>
+          <%= f.label :self_introduction, User.human_attribute_name("self_introduction") %>
+          <%= f.text_area :self_introduction, class: 'form-control mb-3' %>
+          
+          <%= f.submit "更新", class: "btn btn-primary"%>
         <% end %>
       </div>
     </div>

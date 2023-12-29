@@ -4,6 +4,7 @@
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
         <h1 align="center"><%= t('.title') %></h1>
         <%= form_with model: @user, local: true do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <%= f.label :name, User.model_name.human %>
             <%= f.text_field :name, class: 'form-control' %>

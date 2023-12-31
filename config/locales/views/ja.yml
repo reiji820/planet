@@ -30,11 +30,14 @@ ja:
       title: '投稿一覧'
     edit:
       title: '投稿編集'
+    update:
+      success: '編集を更新しました'
     show:
       Edit: '編集'
       Destroy: '削除'
     search:
       search-none:  '検索結果はありません'
+      search-results: '検索結果'
 
   profiles:
     show:

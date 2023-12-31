@@ -4,6 +4,8 @@
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
         <h1 align="center"><%= t('.title') %></h1>
         <%= form_with model: @post, local: true do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
+          <%= render 'shared/flash_message' %>
           <div class="form-group">
             <%= f.label :title, Post.human_attribute_name("title") %>
             <%= f.text_area :title, class: 'form-control' %>
@@ -33,7 +35,7 @@
             <%= f.label :season, Post.human_attribute_name("season") %><br>
             <%= f.select :season, Post.seasons.keys, {prompt: "選択してください"}, class: 'form-control col-xl-2' %><br>
           </div>
-          <%= f.submit '適用', class: 'btn btn-primary' %>
+          <%= f.submit '更新', class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>

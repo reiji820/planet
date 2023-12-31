@@ -6,7 +6,7 @@
 
     <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-      <%= button_tag type: "submit", class: "search-btn" do %>
+      <%= button_tag type: "submit", class: "search-btn", id: "search" do %>
         <i class="fas fa-search"></i>
       <% end %>
     <% end %>

@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:success] = t('.success')
       redirect_to edit_profile_path
     else
       render :edit

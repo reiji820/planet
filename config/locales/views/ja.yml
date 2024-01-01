@@ -42,3 +42,5 @@ ja:
   profiles:
     show:
       Edit: '編集'
+    update:
+      success: 'プロフィールを更新しました'

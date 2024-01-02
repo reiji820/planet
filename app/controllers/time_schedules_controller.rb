@@ -6,13 +6,16 @@ class TimeSchedulesController < ApplicationController
   def create
     @schedule = TimeSchedule.new(plan_params)
     @post = Post.find(params[:post_id])
+    @schedules = TimeSchedule.where(post_id: params[:id]).page(params[:page]).per(10)
     if @schedule.save
       respond_to do |format|
         format.html { redirect_to post_path(@post) }
         format.js
       end
     else
-      format.html { render :new }
+      respond_to do |format|
+        format.html { render 'posts/show' }
+      end
     end
   end
 

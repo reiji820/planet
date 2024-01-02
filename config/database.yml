@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: check_list_production
-  username: check_list
-  password: <%= ENV['CHECK_LIST_DATABASE_PASSWORD'] %>
+  database: <%= ENV['planetdb'] %>
+  username: <%= ENV['reiji'] %>
+  password: <%= ENV['Reijin82'] %>
+  url: <%= ENV['mysql2://xz4yzwo9ptypxbqy:sccej3tz37juj892@r98du2bxwqkq3shg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/y6kuqmt9pn17zyhq'] %>

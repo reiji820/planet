@@ -8,7 +8,7 @@
             <%= image_tag(post.image.url, class: "card-img-block card-img h-50") %>
             <div class="card-body">
               <p class="card-text post-title-link">
-                <%= link_to post.title, post_path(post), class: 'post-link' %>
+                <%= link_to post.title.truncate(42), post_path(post), class: 'post-link' %>
               </p>
             </div>
               <div class="d-flex justify-content-end m-3">
@@ -18,5 +18,7 @@
         </div>
       <% end %> 
     </div>
+
+    <%= paginate @posts %>
   </div>
 </div>

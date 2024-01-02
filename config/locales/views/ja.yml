@@ -5,12 +5,14 @@ ja:
     logout: 'ログアウト'
     mypage: 'マイページ'
     PostNew: '投稿追加'
+
   users:
     new:
       title: '新規登録'
       to_login_page: 'ログインページへ'
     show:
       Edit: '編集'
+
   user_sessions:
     new:
       title: 'ログイン'
@@ -18,6 +20,9 @@ ja:
       password_forget: 'パスワードをお忘れの方はこちら'
     show:
       Edit: '編集'
+    create:
+      fail: 'メールアドレスかパスワードに誤りがあります'
+
   posts:
     new:
       title: '投稿登録'
@@ -25,9 +30,17 @@ ja:
       title: '投稿一覧'
     edit:
       title: '投稿編集'
+    update:
+      success: '編集を更新しました'
     show:
       Edit: '編集'
       Destroy: '削除'
+    search:
+      search-none:  '検索結果はありません'
+      search-results: '検索結果'
+
   profiles:
     show:
       Edit: '編集'
+    update:
+      success: 'プロフィールを更新しました'

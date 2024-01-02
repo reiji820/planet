@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :require_login, only: %i[index]
+  skip_before_action :require_login, only: %i[index show]
   protect_from_forgery :except => [:destroy]
 
   def new
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(20)
   end
 
   def create
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @schedule = TimeSchedule.new
-    @schedules = TimeSchedule.where(post_id: params[:id])
+    @schedules = TimeSchedule.where(post_id: params[:id]).page(params[:page]).per(10)
   end
 
   def edit
@@ -33,6 +33,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:success] = t('.success')
       redirect_to request.referer
     else
       render :new
@@ -43,6 +44,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
+  end
+
+  def search
+    @posts = Post.search(params[:keyword])
+    @posts = @posts.page(params[:page]).per(20)
   end
 
   private

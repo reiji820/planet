@@ -73,9 +73,12 @@
 
           <%= render partial: "posts/schedule", collection: @schedules %>
 
+          <%= paginate @schedules %>
+
           <% if @post.user == current_user %>
             <div class="plan-form m-2">
               <%= form_with(model: [@post, @schedule], class: 'js-form') do |f| %>
+                <%= render 'layouts/error_messages', model: f.object %>
                 <div class="p-2">
                   <%= f.label :time_stamp, TimeSchedule.human_attribute_name("time_stamp") %><br>
                   <%= f.time_field :time_stamp, prompt:true, ignore_data:true, class: 'form-control col-xl-3' %>

@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['planetdb'] %>
-  username: <%= ENV['reiji'] %>
-  password: <%= ENV['Reijin82'] %>
-  url: <%= ENV['mysql2://xz4yzwo9ptypxbqy:sccej3tz37juj892@r98du2bxwqkq3shg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/y6kuqmt9pn17zyhq'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

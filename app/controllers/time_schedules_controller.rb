@@ -1,5 +1,5 @@
 class TimeSchedulesController < ApplicationController
-  protect_from_forgery :except => [:destroy]
+  protect_from_forgery except: [:destroy]
 
   def new; end
 
@@ -22,11 +22,11 @@ class TimeSchedulesController < ApplicationController
   def destroy
     @schedule = TimeSchedule.find(params[:id])
     @post = Post.find(params[:post_id])
-    if @schedule.destroy
-      respond_to do |format|
-        format.html { redirect_to post_path(@post) }
-        format.js
-      end
+    return unless @schedule.destroy
+
+    respond_to do |format|
+      format.html { redirect_to post_path(@post) }
+      format.js
     end
   end
 

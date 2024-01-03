@@ -33,6 +33,10 @@ group :development, :test do
   gem "factory_bot_rails"
   gem 'selenium-webdriver'
   gem 'capybara'
+
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development do

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
-  protect_from_forgery :except => [:destroy]
+  protect_from_forgery except: [:destroy]
 
   def new
     @post = Post.new
@@ -54,6 +54,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id, :season).merge(user_id: @current_user.id)
+    params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id,
+                                 :season).merge(user_id: @current_user.id)
   end
 end

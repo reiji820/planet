@@ -10,15 +10,15 @@ class Post < ApplicationRecord
   validates :budget, presence: true, length: { maximum: 30 }
   validates :prefecture_id, presence: { message: 'を選択してください' }
 
-  enum season: { 春:1, 夏:2, 秋:3, 冬:4 }
+  enum season: { 春: 1, 夏: 2, 秋: 3, 冬: 4 }
 
   attribute :image, :string, default: 'linkedin_banner_image_1.png'
 
   def self.search(search)
-    if search != ""
-      Post.where(['title LIKE(?)', "%#{search}%"])
-    else
+    if search == ''
       Post.includes(:user).order('created_at DESC')
+    else
+      Post.where(['title LIKE(?)', "%#{search}%"])
     end
   end
 end

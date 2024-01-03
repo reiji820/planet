@@ -1,0 +1,52 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  # 新しいcopを有効にする
+  NewCops: enable
+  # 何のルールに引っかかったか表示する
+  DisplayCopNames: true
+  # 対象外
+  Exclude:
+    - "Gemfile"
+    - "bin/**/*"
+    - "db/**/*"
+    - "log/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "lib/**/*"
+    - "config/environments/*"
+    - "config/puma.rb"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "spec/**/*"
+    - "config/initializers/sorcery.rb"
+    - "config/application.rb"
+
+Rails:
+  Enabled: true
+
+# sorceryのreset_password_tokenカラムでひっかかるためfalse
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# メソッドの複雑度
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+# 数字を使ったカラム(name_1)があるため、警告が出ないようにする
+Naming/VariableNumber:
+  Enabled: false

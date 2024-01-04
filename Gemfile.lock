@@ -97,7 +97,9 @@ GEM
     crass (1.0.6)
     date (3.3.4)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
     erubi (1.12.0)
+    excon (0.108.0)
     execjs (2.9.1)
     factory_bot (6.4.5)
       activesupport (>= 5.0.0)
@@ -110,6 +112,22 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.16.3)
+    fog-aws (3.21.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+    fog-core (2.3.0)
+      builder
+      excon (~> 0.71)
+      formatador (>= 0.2, < 2.0)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.4)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -153,6 +171,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
     mysql2 (0.5.5)
     net-imap (0.4.9)
@@ -347,7 +366,9 @@ DEPENDENCIES
   byebug
   capybara
   carrierwave (~> 1.3, >= 1.3.1)
+  dotenv
   factory_bot_rails
+  fog-aws
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)

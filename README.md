@@ -37,6 +37,7 @@ Planet(プラネット)は家族、友人、恋人などとのお出かけの計
 * お問い合わせ、利用規約、プライバシーポリシー
 
 ### 使用技術
+* Amazon S3による画像の管理
 * Stimulus Autocomplete（Rails6 ）
 * Google Maps Platform
 

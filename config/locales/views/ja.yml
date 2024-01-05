@@ -30,6 +30,7 @@ ja:
       title: '投稿一覧'
     edit:
       title: '投稿編集'
+      to_post_show_page: '投稿詳細ページへ'
     update:
       success: '編集を更新しました'
     show:

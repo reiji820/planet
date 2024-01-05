@@ -36,6 +36,9 @@
             <%= f.select :season, Post.seasons.keys, {prompt: "選択してください"}, class: 'form-control col-xl-2' %><br>
           </div>
           <%= f.submit '更新', class: 'btn btn-primary' %>
+          <div class='text-center'>
+            <%= link_to t('.to_post_show_page'), post_path(@post) %>
+          </div>
         <% end %>
       </div>
     </div>

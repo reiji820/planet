@@ -124,3 +124,65 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+// ボタンのスタイル
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  width: 300px; // ボタンの横幅を指定 
+}
+
+// デフォルトのボタンスタイル 
+.button-default {
+  background-color: #3498db;
+  color: #ffffff;
+  border: 2px solid #3498db;
+}
+
+// ホバーエフェクト 
+.button-default:hover {
+  background-color: #ffffff;
+  color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+// リンクのスタイル 
+.fancy-link {
+  color: #3498db;
+  text-decoration: none;
+  position: relative;
+}
+
+.fancy-link:hover {
+  color: #e74c3c;
+}
+
+.fancy-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3498db;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.fancy-link:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+// 任意のピクセル数で角を丸める
+.rounded-card {
+  border-radius: 10px;
+}

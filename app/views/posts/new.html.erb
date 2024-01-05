@@ -1,40 +1,53 @@
 <div class="card-form pb-4 px-3">
   <div class="container">
     <div class="row p-5">
-      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
+      <div class="rounded-card col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 px-4 my-5 shadow bg-white">
         <h1 align="center"><%= t('.title') %></h1>
         <%= form_with model: @post, local: true do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
+
           <div class="form-group">
             <%= f.label :title, Post.human_attribute_name("title") %>
             <%= f.text_area :title, class: 'form-control' %>
           </div>
+
           <div class="form-group">
-            <%= f.label :start_time, Post.human_attribute_name("start_time") %><br>
-            <%= f.time_field :start_time, prompt:true, ignore_data:true, class: 'form-control col-xl-2' %>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.label :start_time, Post.human_attribute_name("start_time") %><br>
+                <%= f.time_field :start_time, prompt: true, ignore_data: true, class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :end_time, Post.human_attribute_name("end_time") %><br>
+                <%= f.time_field :end_time, prompt: true, ignore_data: true, class: 'form-control' %>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <%= f.label :end_time, Post.human_attribute_name("end_time") %><br>
-            <%= f.time_field :end_time, prompt:true, ignore_data:true, class: 'form-control col-xl-2' %>
-          </div>
+
           <div class="form-group">
             <%= f.label :budget, Post.human_attribute_name("budget") %>
             <%= f.text_field :budget, class: 'form-control' %>
           </div>
+
           <div class="form-group">
             <%= f.label :image, Post.human_attribute_name("image") %><br>
             <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
             <%= f.hidden_field :post_image_cache %>
           </div>
+
           <div class="form-group">
             <%= f.label :prefecture_id, Post.human_attribute_name("prefecture_id") %><br>
-            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, class: 'form-control col-xl-2' %>
+            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, class: 'form-control' %>
           </div>
+
           <div class="form-group">
             <%= f.label :season, Post.human_attribute_name("season") %><br>
-            <%= f.select :season, Post.seasons.keys, {prompt: "選択してください"}, class: 'form-control col-xl-4' %><br>
+            <%= f.select :season, Post.seasons.keys, {prompt: "選択してください"}, class: 'form-control' %><br>
           </div>
-          <%= f.submit '投稿', class: 'btn btn-primary' %>
+
+          <div class="text-center">
+            <%= f.submit '投稿', class: 'button button-default mt-3' %><br><br>
+          </div>
         <% end %>
       </div>
     </div>

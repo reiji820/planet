@@ -1,21 +1,21 @@
 <div class="post-list-container py-4 px-5 shadow">
-  <div class="container-fluid px-5 mb-5"> 
+  <div class="container search-results-container"> 
       <% if @posts == [] %>
-        <h2 class = "text-center pt-5 mx-auto fw-bold"><%= t('.search-none') %></h2>
+        <h3 class = "text-center pt-5 mx-auto fw-bold"><%= t('.search-none') %></h3>
       <% else %>
-        <h2 class = "text-center pt-5 mx-auto fw-bold"><%= t('.search-results') %></h2>
-        <div class="row">
+        <h3 class = "text-center pt-5 mx-auto fw-bold"><%= t('.search-results') %></h3>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5">
           <% @posts.each do |post| %>
-            <div class="col-xl-3 col-md-6 mt-5">
-              <div class="card post-card h-100">
-                <%= image_tag(post.image.url, class: "card-img-block card-img h-50") %>
+            <div class="col mb-4">
+              <div class="card">
+              <%= image_tag post.image.url, class: "card-img-top", alt: "投稿の画像" %>
                 <div class="card-body">
-                  <p class="card-text post-title-link">
-                    <%= link_to post.title.truncate(42), post_path(post), class: 'post-link' %>
-                  </p>
+                  <h5 class="card-title post-title-link">
+                    <%= link_to post.title.truncate(45), post_path(post), class: 'post-link text-dark' %>
+                  </h5>
                 </div>
-                <div class="d-flex justify-content-end m-3">
-                  <%= link_to post.user.name, user_path(post.user_id), class: 'post-link' %>
+                <div class="card-footer d-flex justify-content-end">
+                  <%= link_to post.user.name, user_path(post.user_id), class: 'post-link text-muted' %>
                 </div>
               </div>
             </div>
@@ -23,6 +23,8 @@
         </div>
       <% end %>
 
-    <%= paginate @posts %>
+    <div class="d-flex justify-content-center mt-4">
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>

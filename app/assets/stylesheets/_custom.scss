@@ -63,9 +63,24 @@
   background-color: lightgray;
 }
 
+.card-img-top {
+  width: 100%; /* 横幅を100%に設定 */
+  height: 170px; /* 任意の高さに設定 */
+  object-fit: cover; /* 画像を横幅と高さに合わせて表示し、余白はクリップ */
+}
+
+.card-title {
+  height: 90px; /* 任意の高さに設定 */
+}
+
+//　検索結果ページ
+.search-results-container {
+  min-height: 800px; /* 任意の最小高さを指定 */
+}
 // 投稿詳細タイトル表示
 .show-card{
   height: 200px;
+  display: flex;
 }
 
 .show-text-start{
@@ -108,6 +123,32 @@
 
 .time-schedule-card{
   background-color: #f2b3b9;
+  min-height: 400px; /* 任意の最小高さを指定 */
+}
+
+.btn-custom {
+  background: linear-gradient(45deg, #64B5F6, #2196F3); /* 青色のグラデーション */
+  color: #fff; /* テキストの色 */
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5); /* 影の微調整 */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* トランジション効果の追加 */
+}
+
+.btn-custom:hover {
+  background: linear-gradient(45deg, #2196F3, #1565C0); /* ホバー時のグラデーション */
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8); /* ホバー時の影の微調整 */
+  animation: pulse 1s infinite; /* アニメーションの追加 */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 //　プロフィール詳細
@@ -119,8 +160,70 @@
   background-color: #b5d0e8;
 }
 
-//ページネーション
+//　ページネーション
 .pagination {
   justify-content: center;
   margin-top: 20px;
+}
+
+// ボタンのスタイル
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  width: 300px; // ボタンの横幅を指定 
+}
+
+// デフォルトのボタンスタイル 
+.button-default {
+  background-color: #3498db;
+  color: #ffffff;
+  border: 2px solid #3498db;
+}
+
+// ホバーエフェクト 
+.button-default:hover {
+  background-color: #ffffff;
+  color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+// リンクのスタイル 
+.fancy-link {
+  color: #3498db;
+  text-decoration: none;
+  position: relative;
+}
+
+.fancy-link:hover {
+  color: #e74c3c;
+}
+
+.fancy-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3498db;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.fancy-link:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+// 任意のピクセル数で角を丸める
+.rounded-card {
+  border-radius: 10px;
 }

@@ -1,62 +1,60 @@
 <div class="post-detail py-4 px-3 shadow">
-  <div class="container-fluid px-5 my-5">
+  <div class="container-fluid px-2 px-md-5 my-5">
     <div class="row">
-      <div class="col-8">
+      <div class="col-md-8">
         <div class="plan-detail-card shadow">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between align-items-center">
             <div class="p-2">
               <h3 class="post-detail-title font-italic">Plan Details</h3>
             </div>
-
             <div class="d-flex right-items">
               <% if @post.user == current_user %>
-                <div class="align-self-center mr-3">
-                  <%= link_to t('.Edit'), edit_post_path(@post) %>
+                <div class="align-self-center mx-2">
+                  <%= link_to(edit_post_path(@post), class: 'btn btn-outline-secondary btn-sm') do %>
+                    <i class="fas fa-pencil-alt"></i> <%= t('.Edit') %>
+                  <% end %>
                 </div>
-
-                <div class="align-self-center mr-3">
-                  <%= link_to t('.Destroy'), post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
+                <div class="align-self-center mx-2">
+                  <%= link_to(post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: 'btn btn-danger btn-sm') do %>
+                    <i class="fas fa-trash-alt"></i> <%= t('.Destroy') %>
+                  <% end %>
                 </div>
               <% end %>
-
-              <div class="align-self-center mr-3">
-                  <%= link_to @post.user.name, '#' %>
+              <div class="align-self-center mx-2">
+                <%= link_to @post.user.name, user_path(@post.user_id), class: 'btn btn-sm' %>
               </div>
             </div>
           </div><br>
 
-          <div class="d-flex justify-content-center">
-            <div class="show-card border w-75 bg-white">
-              <p class="show-text-start mt-2 mx-3">
+          <div class="d-md-flex justify-content-center">
+            <div class="show-card border w-md-75 w-75 bg-white p-3 mx-auto">
+              <p class="show-text-start">
                 <%= @post.title %>
               </p>
             </div>
           </div><br>
 
-          <div class="d-flex justify-content-center">
-            <div class="time-zone-display w-75 d-inline-flex">
+          <div class="d-md-flex justify-content-center">
+            <div class="time-zone-display w-md-75 w-75 d-inline-flex p-3 mx-5">
               <div class="circle">
                 <span class="time font-italic">
                   時間帯
                 </span>
               </div>
-
-              <div class="time-display">
-                <%= l @post.start_time, format: :short %>から
-                <%= l @post.end_time, format: :short %>頃まで
+              <div class="time-display ml-3">
+                <%= l @post.start_time, format: :short %>から<%= l @post.end_time, format: :short %>頃まで
               </div>
             </div>
-          </div><br>
+          </div>
 
-          <div class="d-flex justify-content-center">
-            <div class="budget-display w-75 d-inline-flex">
+          <div class="d-md-flex justify-content-center">
+            <div class="budget-display w-md-75 w-75 d-inline-flex p-3 mx-5">
               <div class="circle">
                 <span class="budget font-italic">
                   予算
                 </span>
               </div>
-
-              <div class="budget-display">
+              <div class="budget-display ml-3">
                 <%= @post.budget %>
               </div>
             </div>
@@ -65,7 +63,7 @@
         </div>
       </div>
 
-      <div class="col-4">
+      <div class="col-md-4 mt-4 mt-md-0">
         <div class="time-schedule-card d-flex flex-column shadow">
           <div class="p-2">
             <h3 class="time-schedule-title font-italic">Time Schedule</h3>
@@ -81,14 +79,14 @@
                 <%= render 'layouts/error_messages', model: f.object %>
                 <div class="p-2">
                   <%= f.label :time_stamp, TimeSchedule.human_attribute_name("time_stamp") %><br>
-                  <%= f.time_field :time_stamp, prompt:true, ignore_data:true, class: 'form-control col-xl-3' %>
+                  <%= f.time_field :time_stamp, prompt: true, ignore_data: true, class: 'form-control' %>
                 </div>
                 <div class="p-2">
                   <%= f.label :plan, TimeSchedule.human_attribute_name("plan") %>
                   <%= f.text_area :plan, class: 'form-control' %>
                 </div>
                 <div class="p-2">
-                  <%= f.submit '追加', class: 'btn btn-primary' %>
+                  <%= f.submit '追加', class: 'btn btn-custom' %>
                 </div>
               <% end %>
             </div>

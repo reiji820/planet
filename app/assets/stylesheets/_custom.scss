@@ -73,13 +73,14 @@
   height: 90px; /* 任意の高さに設定 */
 }
 
-//検索結果ページ
+//　検索結果ページ
 .search-results-container {
   min-height: 800px; /* 任意の最小高さを指定 */
 }
 // 投稿詳細タイトル表示
 .show-card{
   height: 200px;
+  display: flex;
 }
 
 .show-text-start{
@@ -125,6 +126,31 @@
   min-height: 400px; /* 任意の最小高さを指定 */
 }
 
+.btn-custom {
+  background: linear-gradient(45deg, #64B5F6, #2196F3); /* 青色のグラデーション */
+  color: #fff; /* テキストの色 */
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5); /* 影の微調整 */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* トランジション効果の追加 */
+}
+
+.btn-custom:hover {
+  background: linear-gradient(45deg, #2196F3, #1565C0); /* ホバー時のグラデーション */
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8); /* ホバー時の影の微調整 */
+  animation: pulse 1s infinite; /* アニメーションの追加 */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 //　プロフィール詳細
 .profile-container{
   background-color: lightgray;
@@ -134,7 +160,7 @@
   background-color: #b5d0e8;
 }
 
-//ページネーション
+//　ページネーション
 .pagination {
   justify-content: center;
   margin-top: 20px;

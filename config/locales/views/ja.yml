@@ -36,6 +36,10 @@ ja:
     show:
       Edit: '編集'
       Destroy: '削除'
+      time: '時間帯'
+      from: 'から'
+      until: '頃まで'
+      budget: '予算'
     search:
       search-none:  '検索結果はありません'
       search-results: '検索結果'

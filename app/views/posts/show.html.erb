@@ -38,11 +38,11 @@
             <div class="time-zone-display w-md-75 w-75 d-inline-flex p-3 mx-5">
               <div class="circle">
                 <span class="time font-italic">
-                  時間帯
+                  <%= t('.time') %>
                 </span>
               </div>
               <div class="time-display ml-3">
-                <%= l @post.start_time, format: :short %>から<%= l @post.end_time, format: :short %>頃まで
+                <%= l @post.start_time, format: :short %><%= t('.from') %><%= l @post.end_time, format: :short %><%= t('.until') %>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
             <div class="budget-display w-md-75 w-75 d-inline-flex p-3 mx-5">
               <div class="circle">
                 <span class="budget font-italic">
-                  予算
+                  <%= t('.budget') %>
                 </span>
               </div>
               <div class="budget-display ml-3">

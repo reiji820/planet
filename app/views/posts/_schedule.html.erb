@@ -11,7 +11,11 @@
 
       <% if @post.user == current_user %>
         <div class="text-inline-item">
-          <%= link_to t('posts.show.Destroy'), post_time_schedule_path(@post, schedule), method: :delete, remote: true, data: {confirm: "削除しますか？"}, id: 'destroy' %>
+          <%= link_to post_time_schedule_path(@post, schedule),
+                      method: :delete, remote: true, data: { confirm: "削除しますか？" },
+                      id: 'destroy', class: 'btn btn-danger btn-sm' do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         </div>
       <% end %>
     </div>

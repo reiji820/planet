@@ -6,7 +6,6 @@ class TimeSchedulesController < ApplicationController
   def create
     @schedule = TimeSchedule.new(plan_params)
     @post = Post.find(params[:post_id])
-    @schedules = TimeSchedule.where(post_id: params[:id]).page(params[:page]).per(10)
     if @schedule.save
       respond_to do |format|
         format.html { redirect_to post_path(@post) }
@@ -27,6 +26,22 @@ class TimeSchedulesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to post_path(@post) }
       format.js
+    end
+  end
+
+  def update
+    @schedule = TimeSchedule.find(params[:id])
+    @post = Post.find(params[:post_id])
+
+    if @schedule.update(plan_params)
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'posts/show' }
+      end
     end
   end
 

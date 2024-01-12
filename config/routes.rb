@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create show]
   resources :posts do
-    resources :time_schedules, only: %i[new create destroy]
+    resources :time_schedules, only: %i[new create edit update destroy]
     collection do
       get 'search'
     end

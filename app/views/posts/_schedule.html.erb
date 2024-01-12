@@ -1,23 +1,46 @@
-<div class="p-2"  id=<%= "schedule-#{schedule.id}" %>>
+<div class="p-2" id=<%= "schedule-#{schedule.id}" %>>
   <div class="schedule-card border bg-white m-2 px-2 pt-2">
-    <p class="time-schedule">
+    <p class="time-schedule" id="schedule-time-stamp-<%= schedule.id %>">
       <%= l schedule.time_stamp, format: :short %>
     </p>
 
     <div class="d-flex justify-content-between"> 
-      <p class="time-schedule">
+      <p class="time-schedule" id="schedule-plan-<%= schedule.id %>">
         <%= schedule.plan %>
       </p>
 
       <% if @post.user == current_user %>
         <div class="text-inline-item">
+          <%= link_to '#', class: 'btn btn-primary btn-sm edit-schedule', data: { id: schedule.id }, id: 'edit' do %>
+            <%= content_tag(:i, nil, class: 'fas fa-edit') %>
+          <% end %>
+
           <%= link_to post_time_schedule_path(@post, schedule),
-                      method: :delete, remote: true, data: { confirm: "削除しますか？" },
-                      id: 'destroy', class: 'btn btn-danger btn-sm' do %>
+                      method: :delete, remote: true, data: { confirm: "削除しますか？", id: schedule.id  },
+                      id: 'delete', class: 'btn btn-danger btn-sm delete-schedule' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
       <% end %>
     </div>
+
+    <div class="edit-form" id="edit-form-<%= schedule.id %>" style="display: none;">
+      <%= form_for [@post, schedule], remote: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="p-2">
+          <%= f.label :time_stamp, TimeSchedule.human_attribute_name("time_stamp") %><br>
+          <%= f.time_field :time_stamp, prompt: true, ignore_data: true, class: 'form-control' %>
+        </div>
+        <div class="p-2">
+          <%= f.label :plan, TimeSchedule.human_attribute_name("plan") %>
+          <%= f.text_area :plan, class: 'form-control' %>
+        </div>
+        <div class="p-2">
+          <%= f.submit '更新', class: 'btn btn-custom' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<%= javascript_include_tag 'edit_schedule' %>

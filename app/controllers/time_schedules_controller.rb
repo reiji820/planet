@@ -30,6 +30,22 @@ class TimeSchedulesController < ApplicationController
     end
   end
 
+  def update
+    @schedule = TimeSchedule.find(params[:id])
+    @post = Post.find(params[:post_id])
+
+    if @schedule.update(plan_params)
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'posts/show' }
+      end
+    end
+  end
+
   private
 
   def plan_params

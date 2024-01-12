@@ -1,0 +1,267 @@
+@charset "UTF-8";
+/* line 2, app/assets/stylesheets/_custom.scss */
+.header {
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* line 5, app/assets/stylesheets/_custom.scss */
+.container {
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* line 8, app/assets/stylesheets/_custom.scss */
+.container-fluid {
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* line 12, app/assets/stylesheets/_custom.scss */
+.card-form {
+  background-color: lightgray;
+}
+
+/* line 15, app/assets/stylesheets/_custom.scss */
+.card-form-content {
+  border-radius: 25px;
+  background-color: #fff;
+}
+
+/* line 24, app/assets/stylesheets/_custom.scss */
+.footer-li {
+  list-style: none;
+}
+
+/* line 28, app/assets/stylesheets/_custom.scss */
+.footer-link {
+  color: gray;
+  text-decoration: none;
+  font-size: 0.84em;
+  transition-property: color;
+  transition-duration: .2s;
+  display: block;
+  margin: 0 10px;
+}
+
+/* line 37, app/assets/stylesheets/_custom.scss */
+.footer-link:hover {
+  color: #676767 !important;
+}
+
+/* line 42, app/assets/stylesheets/_custom.scss */
+.footer-copyright {
+  color: gray;
+  font-size: 0.84em;
+}
+
+/* line 49, app/assets/stylesheets/_custom.scss */
+.user-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+/* line 56, app/assets/stylesheets/_custom.scss */
+.post-link {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 62, app/assets/stylesheets/_custom.scss */
+.post-list-container {
+  background-color: lightgray;
+}
+
+/* line 66, app/assets/stylesheets/_custom.scss */
+.card-img-top {
+  width: 100%;
+  /* 横幅を100%に設定 */
+  height: 170px;
+  /* 任意の高さに設定 */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* 画像を横幅と高さに合わせて表示し、余白はクリップ */
+}
+
+/* line 72, app/assets/stylesheets/_custom.scss */
+.card-title {
+  height: 90px;
+  /* 任意の高さに設定 */
+}
+
+/* line 77, app/assets/stylesheets/_custom.scss */
+.search-results-container {
+  min-height: 800px;
+  /* 任意の最小高さを指定 */
+}
+
+/* line 81, app/assets/stylesheets/_custom.scss */
+.show-card {
+  height: 200px;
+  display: flex;
+}
+
+/* line 86, app/assets/stylesheets/_custom.scss */
+.show-text-start {
+  font-size: 20px;
+}
+
+/* line 90, app/assets/stylesheets/_custom.scss */
+.post-detail-title {
+  color: #001f3f;
+}
+
+/* line 94, app/assets/stylesheets/_custom.scss */
+.time-schedule-title {
+  color: #e74c3c;
+}
+
+/* line 99, app/assets/stylesheets/_custom.scss */
+.post-detail {
+  background-color: lightgray;
+}
+
+/* line 103, app/assets/stylesheets/_custom.scss */
+.plan-detail-card {
+  background-color: #b5d0e8;
+}
+
+/* line 107, app/assets/stylesheets/_custom.scss */
+.circle {
+  width: 60px;
+  height: 24px;
+  border-radius: 12px;
+  background: #e0e0e0;
+}
+
+/* line 114, app/assets/stylesheets/_custom.scss */
+.time {
+  position: relative;
+  left: 5px;
+}
+
+/* line 119, app/assets/stylesheets/_custom.scss */
+.budget {
+  position: relative;
+  left: 12px;
+}
+
+/* line 124, app/assets/stylesheets/_custom.scss */
+.time-schedule-card {
+  background-color: #f2b3b9;
+  min-height: 400px;
+  /* 任意の最小高さを指定 */
+}
+
+/* line 129, app/assets/stylesheets/_custom.scss */
+.btn-custom {
+  background: linear-gradient(45deg, #64B5F6, #2196F3);
+  /* 青色のグラデーション */
+  color: #fff;
+  /* テキストの色 */
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5);
+  /* 影の微調整 */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  /* トランジション効果の追加 */
+}
+
+/* line 136, app/assets/stylesheets/_custom.scss */
+.btn-custom:hover {
+  background: linear-gradient(45deg, #2196F3, #1565C0);
+  /* ホバー時のグラデーション */
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8);
+  /* ホバー時の影の微調整 */
+  animation: pulse 1s infinite;
+  /* アニメーションの追加 */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* line 155, app/assets/stylesheets/_custom.scss */
+.profile-container {
+  background-color: lightgray;
+}
+
+/* line 159, app/assets/stylesheets/_custom.scss */
+.profile-card {
+  background-color: #b5d0e8;
+}
+
+/* line 164, app/assets/stylesheets/_custom.scss */
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* line 170, app/assets/stylesheets/_custom.scss */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  width: 250px;
+}
+
+/* line 184, app/assets/stylesheets/_custom.scss */
+.button-default {
+  background-color: #3498db;
+  color: #ffffff;
+  border: 2px solid #3498db;
+}
+
+/* line 191, app/assets/stylesheets/_custom.scss */
+.button-default:hover {
+  background-color: #ffffff;
+  color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* line 198, app/assets/stylesheets/_custom.scss */
+.fancy-link {
+  color: #3498db;
+  text-decoration: none;
+  position: relative;
+}
+
+/* line 204, app/assets/stylesheets/_custom.scss */
+.fancy-link:hover {
+  color: #e74c3c;
+}
+
+/* line 208, app/assets/stylesheets/_custom.scss */
+.fancy-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3498db;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 221, app/assets/stylesheets/_custom.scss */
+.fancy-link:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* line 227, app/assets/stylesheets/_custom.scss */
+.rounded-card {
+  border-radius: 10px;
+}

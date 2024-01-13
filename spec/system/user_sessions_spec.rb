@@ -43,7 +43,7 @@ RSpec.describe 'UserSessions', type: :system do
     context 'ログアウトボタンをクリックする' do
       it 'ログアウト処理が成功する' do
         login(user)
-        expect(page).to have_content('投稿一覧')
+        expect(page).to have_content('都道府県を選択')
         click_link 'ログアウト'
         expect {
           page.accept_confirm "ログアウトしますか？"

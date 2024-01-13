@@ -13,7 +13,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'user[password]', with: 'password'
           fill_in 'user[password_confirmation]', with: 'password'
           click_button '登録'
-          expect(page).to have_content('投稿一覧')
+          expect(page).to have_content('都道府県を選択')
           expect(current_path).to eq root_path
         end
       end
@@ -76,7 +76,7 @@ RSpec.describe "Users", type: :system do
   describe 'ログイン後' do
     before do
       login(user)
-      expect(page).to have_content('投稿一覧')
+      expect(page).to have_content('都道府県を選択')
       visit edit_profile_path
     end
 

@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.page(params[:page]).per(20)
+    @address = Prefecture.all
   end
 
   def create
@@ -47,8 +48,10 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword])
+    @posts = Post.search_with_filters(params[:keyword], params[:prefecture_id], params[:season])
     @posts = @posts.page(params[:page]).per(20)
+    @address = Prefecture.all
+    render :index
   end
 
   private

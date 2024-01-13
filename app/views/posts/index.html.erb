@@ -1,7 +1,30 @@
 <div class="post-list-container py-4 px-5 shadow">
   <div class="container">
-    <h3 class='text-center pt-5 mx-auto fw-bold'><%= t('.title') %></h3>
-    
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+          <div class="input-group d-flex justify-content-center">
+            <%= form.text_field :keyword, placeholder: "キーワードで投稿を検索", class: "form-control search-input" %>
+            <button type="submit" class="btn btn-primary search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="col-md-6 mt-3 mt-md-0">
+        <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+          <div class="input-group d-flex justify-content-end">
+            <%= select_tag :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, params[:prefecture_id]), include_blank: "都道府県を選択", class: "form-select" %>
+            <%= select_tag :season, options_for_select(Post::SEASONS.map { |season| [t(".seasons.#{season}"), season] }, params[:season]), include_blank: "季節を選択", class: "form-select" %>
+            <button type="submit" class="btn btn-primary search-icon-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5">
       <% @posts.each do |post| %>
         <div class="col mb-4">

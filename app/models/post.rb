@@ -14,6 +14,15 @@ class Post < ApplicationRecord
 
   attribute :image, :string, default: 'linkedin_banner_image_1.png'
 
+  SEASONS = %w[春 夏 秋 冬].freeze
+
+  def self.search_with_filters(keyword, prefecture_id, season)
+    posts = search(keyword)
+    posts = posts.where(prefecture_id: prefecture_id) if prefecture_id.present?
+    posts = posts.where(season: season) if season.present?
+    posts
+  end
+
   def self.search(search)
     if search == ''
       Post.includes(:user).order('created_at DESC')

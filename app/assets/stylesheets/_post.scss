@@ -1,0 +1,133 @@
+//　投稿一覧リンク
+.post-link {
+  text-decoration: none;
+  color: black; 
+}
+
+//　投稿一覧ページ
+.post-list-container{
+  background-color: lightgray;
+  min-height: 800px; /* 任意の最小高さを指定 */
+}
+
+.card-img-top {
+  width: 100%; /* 横幅を100%に設定 */
+  height: 170px; /* 任意の高さに設定 */
+  object-fit: cover; /* 画像を横幅と高さに合わせて表示し、余白はクリップ */
+}
+
+.card-title {
+  height: 90px; /* 任意の高さに設定 */
+}
+
+// 投稿詳細タイトル表示
+.show-card{
+  height: 200px;
+  display: flex;
+}
+
+.show-text-start{
+  font-size: 20px;
+}
+
+.post-detail-title{
+  color: #001f3f;
+}
+
+.time-schedule-title{
+  color: #e74c3c;
+}
+
+// 投稿詳細画面
+.post-detail{
+  background-color: lightgray;
+}
+
+.plan-detail-card{
+  background-color: #b5d0e8;
+}
+
+.circle{
+  width: 60px;
+  height: 24px;
+  border-radius: 12px;
+  background: #e0e0e0;
+}
+
+.time{
+  position: relative;
+  left: 5px;
+}
+
+.budget{
+  position: relative;
+  left: 12px;
+}
+
+.time-schedule-card{
+  background-color: #f2b3b9;
+  min-height: 400px; /* 任意の最小高さを指定 */
+}
+
+.btn-custom {
+  background: linear-gradient(45deg, #64B5F6, #2196F3); /* 青色のグラデーション */
+  color: #fff; /* テキストの色 */
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5); /* 影の微調整 */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* トランジション効果の追加 */
+}
+
+.btn-custom:hover {
+  background: linear-gradient(45deg, #2196F3, #1565C0); /* ホバー時のグラデーション */
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8); /* ホバー時の影の微調整 */
+  animation: pulse 1s infinite; /* アニメーションの追加 */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+//　ページネーション
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+// 検索フォーム
+.search-form {
+  margin-bottom: 15px;
+}
+
+.search-input {
+  border-radius: 0;
+}
+
+.search-btn,
+.search-icon-btn {
+  border-radius: 0 5px 5px 0;
+}
+
+.input-group {
+  display: flex;
+}
+
+.form-select {
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

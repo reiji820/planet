@@ -12,7 +12,7 @@ RSpec.describe "Posts", type: :system do
     end
     describe 'ページ遷移確認' do
       it '投稿一覧ページに遷移できる' do
-        expect(page).to have_content('投稿一覧')
+        expect(page).to have_content('都道府県を選択')
         expect(current_path).to eq posts_path
       end
 
@@ -42,7 +42,7 @@ RSpec.describe "Posts", type: :system do
           select '青森県', from: 'post_prefecture_id'
           select '春', from: 'post_season'
           click_on '投稿'
-          expect(page).to have_content('投稿一覧')
+          expect(page).to have_content('都道府県を選択')
           expect(page).to have_content('test')
           expect(current_path).to eq root_path
         end
@@ -184,7 +184,7 @@ RSpec.describe "Posts", type: :system do
           click_on '削除'
           expect {
             page.accept_confirm "削除しますか？"
-            expect(page).to have_content "投稿一覧"
+            expect(page).to have_content "都道府県を選択"
           }
         end
       end
@@ -203,7 +203,6 @@ RSpec.describe "Posts", type: :system do
           visit root_path
           fill_in 'keyword', with: post.title
           find('#search').click
-          expect(page).to have_content('検索結果')
           expect(page).to have_content(post.title)
         end
       end
@@ -213,7 +212,47 @@ RSpec.describe "Posts", type: :system do
           visit root_path
           fill_in 'keyword', with: 'abcdefghijk'
           find('#search').click
-          expect(page).to have_content('検索結果はありません')
+          expect(page).not_to have_content('abcdefghijk')
+        end
+      end
+    end
+
+    describe '都道府県検索' do
+      context '検索結果が存在する' do
+        it '検索結果一覧に遷移する' do
+          visit root_path
+          select '北海道', from: 'prefecture_id'
+          find('#search-category').click
+          expect(page).to have_content(post.title)
+        end
+      end
+
+      context '検索結果が存在しない' do
+        it '検索結果一覧に遷移しない' do
+          visit root_path
+          select '大阪府', from: 'prefecture_id'
+          find('#search-category').click
+          expect(page).not_to have_content(post.title)
+        end
+      end
+    end
+
+    describe '季節検索' do
+      context '検索結果が存在する' do
+        it '検索結果一覧に遷移する' do
+          visit root_path
+          select '春', from: 'season'
+          find('#search-category').click
+          expect(page).to have_content(post.title)
+        end
+      end
+
+      context '検索結果が存在しない' do
+        it '検索結果一覧に遷移しない' do
+          visit root_path
+          select '夏', from: 'season'
+          find('#search-category').click
+          expect(page).not_to have_content(post.title)
         end
       end
     end

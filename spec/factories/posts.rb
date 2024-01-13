@@ -6,6 +6,7 @@ FactoryBot.define do
     budget { "budget" }
     image { nil }
     prefecture_id { 1 }
+    season { "春" }
     association :user
   end
 end

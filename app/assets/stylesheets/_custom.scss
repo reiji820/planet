@@ -106,3 +106,38 @@
 .rounded-card {
   border-radius: 10px;
 }
+
+// プライバシーポリシー 利用規約
+.privacy-container {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.privacy-container h1 {
+  border-bottom: 2px solid #444;
+  padding-bottom: 10px;
+  color: #444;
+}
+
+.privacy-container h2 {
+  color: #555;
+  margin-top: 20px;
+}
+
+.privacy-container p {
+  margin-top: 10px;
+}
+
+.privacy-container ul {
+  margin: 10px 0;
+}
+
+.privacy-container ul li {
+  margin-bottom: 5px;
+}

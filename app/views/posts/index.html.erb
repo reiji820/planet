@@ -15,8 +15,8 @@
       <div class="col-md-6 mt-3 mt-md-0">
         <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
           <div class="input-group d-flex justify-content-end">
-            <%= select_tag :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, params[:prefecture_id]), include_blank: "都道府県を選択", class: "form-select" %>
-            <%= select_tag :season, options_for_select(Post::SEASONS.map { |season| [t(".seasons.#{season}"), season] }, params[:season]), include_blank: "季節を選択", class: "form-select" %>
+            <%= select_tag :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, params[:prefecture_id]), include_blank: "都道府県を選択", class: "form-select mr-1" %>
+            <%= select_tag :season, options_for_select(Post::SEASONS.map { |season| [t(".seasons.#{season}"), season] }, params[:season]), include_blank: "季節を選択", class: "form-select mr-1" %>
             <button type="submit" class="btn btn-primary search-icon-btn" id="search-category">
               <i class="fas fa-search"></i>
             </button>

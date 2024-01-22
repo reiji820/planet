@@ -18,7 +18,14 @@
       <div class="card shadow">
         <div class="card-header bg-dark text-white">
           <div class="d-flex justify-content-between align-items-center">
-            <h2 class="m-0"><%= @user.name %></h2>
+            <div class="user-container d-flex align-items-center">
+              <% if @user.avatar? %>
+                <%= image_tag @user.avatar.url, size: "40x40", style: "border-radius: 50%;", class: "mr-1" %>
+              <% else %>
+                <%= image_tag("noavatar.png", size: "40x40", style: "border-radius: 50%;", class: "mr-1") %>
+              <% end %>
+              <h2 class="m-0 mb-0"><%= @user.name %></h2>
+            </div>
             <% if current_user == @user %>
               <%= link_to edit_profile_path, class: 'btn btn-success' do %>
                 <i class="fas fa-edit"></i> <%= t('.Edit') %>

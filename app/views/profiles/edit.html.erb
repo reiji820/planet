@@ -5,6 +5,10 @@
         <%= form_with model: @user, url: profile_path, local: true do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
           <%= render 'shared/flash_message' %>
+
+          <%= f.label :avatar, User.human_attribute_name("avatar") %>
+          <%= f.file_field :avatar, class: 'form-control mb-3' %>
+
           <%= f.label :name, User.model_name.human %>
           <%= f.text_field :name, class: 'form-control mb-3' %>
 

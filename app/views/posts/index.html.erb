@@ -36,6 +36,11 @@
               </h5>
             </div>
             <div class="card-footer d-flex justify-content-end">
+              <% if post.user.avatar? %>
+                <%= image_tag post.user.avatar.url, size: "25x25", style: "border-radius: 50%;", class: "mr-1" %>
+              <% else %>
+                <%= image_tag("noavatar.png", size: "25x25", style: "border-radius: 50%;", class: "mr-1") %>
+              <% end %>
               <%= link_to post.user.name, user_path(post.user_id), class: 'post-link text-muted' %>
             </div>
           </div>

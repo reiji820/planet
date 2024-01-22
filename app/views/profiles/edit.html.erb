@@ -8,6 +8,7 @@
 
           <%= f.label :avatar, User.human_attribute_name("avatar") %>
           <%= f.file_field :avatar, class: 'form-control mb-3' %>
+          <%= f.hidden_field :user_avatar_cache %>
 
           <%= f.label :name, User.model_name.human %>
           <%= f.text_field :name, class: 'form-control mb-3' %>

@@ -12,6 +12,7 @@ ja:
       to_login_page: 'ログインページへ'
     show:
       Edit: '編集'
+      mypage: 'マイページ'
 
   user_sessions:
     new:
@@ -48,5 +49,6 @@ ja:
   profiles:
     show:
       Edit: '編集'
+      mypage: 'マイページ'
     update:
       success: 'プロフィールを更新しました'

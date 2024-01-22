@@ -119,6 +119,7 @@
 }
 
 .form-select {
+  border: none;
   border-radius: 0;
 }
 
@@ -130,4 +131,12 @@
 .btn-primary:hover {
   background-color: #0056b3;
   border-color: #0056b3;
+}
+
+
+// ユーザーのボタンurl
+.user-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }

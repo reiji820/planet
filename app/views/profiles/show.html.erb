@@ -1,33 +1,45 @@
-<div class="profile-container py-4 px-5 shadow">
-  <div class="container-fluid px-5 my-5">
-    <div class="row justify-content-center">
-      <div class="col-xl-8">
-        <div class="profile-card shadow">
-          <div class="d-flex justify-content-between">
-            <div class="p-2 m-4">
-              <h2 class="profile-title"><%= current_user.name %></h2>
-            </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item active bg-dark">
+              <%= link_to profile_path, class: 'text-white' do %>
+                <i class="fas fa-user"></i> <%= t('.mypage') %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-            <div class="d-flex right-items">
-              <div class="align-self-center mr-3">
-                <%= link_to t('.Edit'), edit_profile_path, class: 'btn btn-success float-right mr-3' %>
-              </div>
+    <div class="col-lg-8">
+      <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="user-container d-flex align-items-center">
+              <% if current_user.avatar? %>
+                <%= image_tag current_user.avatar.url, size: "40x40", style: "border-radius: 50%;", class: "mr-1" %>
+              <% else %>
+                <%= image_tag("noavatar.png", size: "40x40", style: "border-radius: 50%;", class: "mr-1") %>
+              <% end %>
+              <h2 class="m-0 mb-0"><%= current_user.name %></h2>
+            </div>
+            <%= link_to edit_profile_path, class: 'btn btn-success' do %>
+              <i class="fas fa-edit"></i> <%= t('.Edit') %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="card border bg-light mb-4">
+            <div class="card-body">
+              <p class="card-text"><strong><%= User.human_attribute_name("place_of_birth") %>:</strong> <%= current_user.place_of_birth %></p>
+              <p class="card-text"><strong><%= User.human_attribute_name("hobbies") %>:</strong> <%= current_user.hobbies %></p>
+              <p class="card-text"><strong><%= User.human_attribute_name("self_introduction") %>:</strong> <%= current_user.self_introduction %></p>
             </div>
           </div>
-
-          <div class="d-flex justify-content-center">
-            <div class="card border w-75 bg-white mb-5">
-              <p class="show-text-start mt-2 mx-3">
-                <%= User.human_attribute_name("place_of_birth") %>:<%= current_user.place_of_birth %>
-              </p><br>
-              <p class="show-text-start mt-2 mx-3">
-                <%= User.human_attribute_name("hobbies") %>:<%= current_user.hobbies %>
-              </p><br>
-              <p class="show-text-start mt-2 mx-3">
-                <%= User.human_attribute_name("self_introduction") %>:<%= current_user.self_introduction %>
-              </p><br>
-            </div>
-          </div><br>
         </div>
       </div>
     </div>

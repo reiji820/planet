@@ -12,6 +12,7 @@ ja:
         hobbies: '趣味'
         place_of_birth: '出身'
         self_introduction: '自己紹介'
+        avatar: 'ユーザー画像'
       post:
         title: 'タイトル'
         start_time: '開始時刻'

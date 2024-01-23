@@ -11,15 +11,17 @@
       
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <%= link_to profile_path, class: 'dropdown-item' do %>
+            <i class="fa fa-user"></i> <%= t('defaults.mypage') %>
+          <% end %>
           <li class="nav-item">
-            <%= link_to t('defaults.mypage'), profile_path, class: 'dropdown-item' %>
+            <%= link_to new_post_path, class: 'dropdown-item' do %>
+              <i class="fa fa-pencil-alt"></i> <%= t('defaults.PostNew') %>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to t('defaults.PostNew'), new_post_path, class: 'dropdown-item' %>
-          </li>
-          <li class="nav-item">       
             <%= link_to logout_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: 'dropdown-item' do %>
-              <%= t('defaults.logout') %>
+              <i class="fa fa-sign-out-alt"></i> <%= t('defaults.logout') %>
             <% end %>
           </li>
         </ul>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
+  get 'help', to: 'pages#help'
 
   resources :users, only: %i[new create show]
   resources :posts do

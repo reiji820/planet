@@ -3,6 +3,7 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
+    help: '使い方'
     mypage: 'マイページ'
     PostNew: '投稿追加'
 

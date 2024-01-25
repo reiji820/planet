@@ -37,6 +37,8 @@ ja:
     update:
       success: '編集を更新しました'
     show:
+      Unlike: 'いいねを外す'
+      Like: 'いいねする'
       Edit: '編集'
       Destroy: '削除'
       time: '時間帯'

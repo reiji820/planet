@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :time_schedules, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorites_by_users, through: :favorites, source: :user
 
   mount_uploader :image, ImageUploader
 
@@ -33,6 +34,6 @@ class Post < ApplicationRecord
   end
 
   def favorited?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.exists?(user_id: user.id)
   end
 end

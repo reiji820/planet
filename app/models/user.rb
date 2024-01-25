@@ -2,6 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
   mount_uploader :avatar, AvatarUploader
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }

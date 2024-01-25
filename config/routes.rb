@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
   get 'help', to: 'pages#help'
+  get 'user_post', to: 'profiles#user_posts'
+  get 'favorited_posts', to: 'profiles#favorited_posts'
 
   resources :users, only: %i[new create show]
   resources :posts do

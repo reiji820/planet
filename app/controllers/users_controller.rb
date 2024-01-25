@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(10)
+    @favorited_posts = @user.favorited_posts.page(params[:page]).per(10)
   end
 
   private

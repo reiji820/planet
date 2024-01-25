@@ -12,6 +12,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def user_posts
+    @user_posts = current_user.posts.order('created_at DESC').page(params[:page]).per(10)
+  end
+
+  def favorited_posts
+    @favorited_posts = current_user.favorited_posts.page(params[:page]).per(10)
+  end
+
   private
 
   def set_user

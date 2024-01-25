@@ -1,0 +1,2 @@
+// お気に入りのカウントとアイコンを更新
+document.getElementById('favorite-info-<%= @post.id %>').innerHTML = '<%= escape_javascript(render partial: "favorite_link", locals: { post: @post }) %>';

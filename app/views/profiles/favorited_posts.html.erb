@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <%= link_to profile_path, class: 'text-dark' do %>
+                <i class="fas fa-user"></i> <%= t('.mypage') %>
+              <% end %>
+            </li>
+
+            <li class="list-group-item">
+              <%= link_to user_post_path, class: 'text-dark' do %>
+                <i class="fas fa-list"></i> <%= t('.my_posts') %>
+              <% end %>
+            </li>
+
+            <li class="list-group-item bg-dark">
+              <%= link_to favorited_posts_path, class: 'text-white' do %>
+                <i class="fas fa-heart"></i> <%= t('.my_favorites') %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+          <h3 class="m-0"><%= t('.favorited') %></h3>
+        </div>
+        <div class="card-body">
+          <% @favorited_posts.each do |post| %>
+            <div class="card mb-3">
+              <%= image_tag post.image.url, class: "card-img-top", alt: post.title %>
+
+              <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <%= link_to '詳細を見る', post_path(post), class: 'btn-profile-custom' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <%= paginate @favorited_posts %>
+  </div>
+</div>

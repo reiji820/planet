@@ -4,9 +4,9 @@
       <div class="card shadow">
         <div class="card-body">
           <ul class="list-group">
-            <li class="list-group-item active bg-dark">
-              <%= link_to profile_path, class: 'text-white' do %>
-                <i class="fas fa-user"></i> <%= t('.mypage') %>
+            <li class="list-group-item bg-dark">
+              <%= link_to user_path(@user), class: 'text-white' do %>
+                <i class="fas fa-user"></i> <%= t('.profile') %>
               <% end %>
             </li>
           </ul>
@@ -42,6 +42,45 @@
               <p class="card-text"><strong><%= User.human_attribute_name("self_introduction") %>:</strong> <%= @user.self_introduction %></p>
             </div>
           </div>
+        </div>
+
+        <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#posts" data-toggle="tab">ユーザーの投稿</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#likes" data-toggle="tab">いいねした投稿</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="posts">
+          <% @posts.each do |post| %>
+            <div class="card m-3">
+              <%= image_tag post.image.url, class: "card-img-top", alt: post.title %>
+
+              <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <%= link_to '詳細を見る', post_path(post), class: 'btn-profile-custom' %>
+              </div>
+            </div>
+          <% end %>
+          <%= paginate @posts %>
+        </div>
+
+        <div class="tab-pane fade" id="likes">
+        <% @favorited_posts.each do |post| %>
+          <div class="card m-3">
+            <%= image_tag post.image.url, class: "card-img-top", alt: post.title %>
+
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <%= link_to '詳細を見る', post_path(post), class: 'btn-profile-custom' %>
+            </div>
+          </div>
+        <% end %>
+
+          <%= paginate @favorited_posts %>
         </div>
       </div>
     </div>

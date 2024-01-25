@@ -13,7 +13,7 @@ ja:
       to_login_page: 'ログインページへ'
     show:
       Edit: '編集'
-      mypage: 'マイページ'
+      profile: 'プロフィール'
 
   user_sessions:
     new:
@@ -37,6 +37,8 @@ ja:
     update:
       success: '編集を更新しました'
     show:
+      Unlike: 'いいねを外す'
+      Like: 'いいねする'
       Edit: '編集'
       Destroy: '削除'
       time: '時間帯'
@@ -51,5 +53,16 @@ ja:
     show:
       Edit: '編集'
       mypage: 'マイページ'
+      my_posts: '自分の投稿'
+      my_favorites: 'いいね一覧'
     update:
       success: 'プロフィールを更新しました'
+    user_posts:
+      mypage: 'マイページ'
+      my_posts: '自分の投稿'
+      my_favorites: 'いいね一覧'
+    favorited_posts:
+      favorited: 'いいねした投稿'
+      mypage: 'マイページ'
+      my_posts: '自分の投稿'
+      my_favorites: 'いいね一覧'

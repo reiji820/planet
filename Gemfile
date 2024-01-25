@@ -62,5 +62,6 @@ gem "mini_magick"
 gem 'active_hash'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 gem 'dotenv'

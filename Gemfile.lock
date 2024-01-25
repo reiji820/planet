@@ -149,6 +149,9 @@ GEM
     kaminari-activerecord (1.2.2)
       activerecord
       kaminari-core (= 1.2.2)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     kaminari-core (1.2.2)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -371,6 +374,7 @@ DEPENDENCIES
   fog-aws
   jbuilder (~> 2.7)
   kaminari
+  kaminari-bootstrap
   listen (~> 3.3)
   mini_magick
   mysql2 (~> 0.5)

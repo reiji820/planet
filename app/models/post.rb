@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :time_schedules, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorites_by_users, through: :favorites, source: :user
 
   mount_uploader :image, ImageUploader
 
@@ -29,5 +31,9 @@ class Post < ApplicationRecord
     else
       Post.where(['title LIKE(?)', "%#{search}%"])
     end
+  end
+
+  def favorited?(user)
+    favorites.exists?(user_id: user.id)
   end
 end

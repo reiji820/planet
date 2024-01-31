@@ -9,6 +9,7 @@ document.addEventListener("turbolinks:load", function() {
       const planElement = document.getElementById(`schedule-plan-${scheduleId}`);
       const editForm = document.getElementById(`edit-form-${scheduleId}`);
       const timeSchedule = document.getElementById(`schedule-time-stamp-${scheduleId}`);
+      const genreElement = document.getElementById(`schedule-genre-${scheduleId}`);  // ジャンル要素の取得
 
       if (planElement && editForm) {
         // 編集および削除ボタンを非表示にする
@@ -21,6 +22,9 @@ document.addEventListener("turbolinks:load", function() {
         timeSchedule.style.display = 'none';
         planElement.style.display = 'none';
         editForm.style.display = 'block';
+        if (genreElement) {
+          genreElement.style.display = 'none';  // ジャンル要素を非表示にする
+        }
 
         // フォーム送信用のイベントリスナーを追加
         const saveButton = editForm.querySelector('input[type="submit"]');
@@ -35,6 +39,9 @@ document.addEventListener("turbolinks:load", function() {
           timeSchedule.style.display = 'block';
           planElement.style.display = 'block';
           editForm.style.display = 'none';
+          if (genreElement) {
+            genreElement.style.display = 'block';  // ジャンル要素を再表示する
+          }
 
           // 画面の手動更新
           Turbolinks.visit(window.location.href, { action: 'replace' });

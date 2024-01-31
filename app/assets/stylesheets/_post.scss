@@ -140,3 +140,61 @@
   top: 15px;
   right: 20px;
 }
+
+.genre-border {
+  border: 1px solid; /* ボーダーを追加 */
+  padding: 0.5rem; /* 内側の余白 */
+  border-radius: 0.25rem; /* 角丸の設定 */
+  color: black; /* テキスト色を黒に */
+}
+
+/* 背景色とテキスト色のクラス */
+.bg-color-red {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.bg-color-orange {
+  background-color: orange;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.bg-color-yellow {
+  background-color: #ffd700;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.bg-color-green {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.bg-color-blue {
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.bg-color-purple {
+  background-color: purple;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+.bg-color-gray {
+  background-color: gray;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+/* 共通スタイル */
+.genre-container {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+}

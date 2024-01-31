@@ -1,10 +1,18 @@
 <div class="p-2" id=<%= "schedule-#{schedule.id}" %>>
   <div class="schedule-card border bg-white m-2 px-2 pt-2">
-    <p class="time-schedule" id="schedule-time-stamp-<%= schedule.id %>">
-      <%= l schedule.time_stamp, format: :short %>
-    </p>
+    <div class="d-flex align-items-center">
+      <p class="time-schedule mb-0 me-3 mr-3" id="schedule-time-stamp-<%= schedule.id %>">
+        <%= l schedule.time_stamp, format: :short %>
+      </p>
 
-    <div class="d-flex justify-content-between"> 
+      <% icon_class, bg_color_class = genre_icon_with_background_and_color(schedule.genre) %>
+      <div class="genre-container <%= bg_color_class %>" id="schedule-genre-<%= schedule.id %>">
+        <i class="<%= icon_class %> me-2 mr-2"></i>
+        <span><%= schedule.genre %></span>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-3"> 
       <p class="time-schedule" id="schedule-plan-<%= schedule.id %>">
         <%= schedule.plan %>
       </p>
@@ -30,6 +38,10 @@
         <div class="p-2">
           <%= f.label :time_stamp, TimeSchedule.human_attribute_name("time_stamp") %><br>
           <%= f.time_field :time_stamp, prompt: true, ignore_data: true, class: 'form-control' %>
+        </div>
+        <div class="p-2">
+          <%= f.label :genre, TimeSchedule.human_attribute_name("genre") %>
+          <%= f.select :genre, TimeSchedule::GENRES.map { |genre| [genre, genre] }, { prompt: "ジャンルを選択してください" }, { class: 'form-control' } %>
         </div>
         <div class="p-2">
           <%= f.label :plan, TimeSchedule.human_attribute_name("plan") %>

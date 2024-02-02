@@ -40,9 +40,10 @@ RSpec.describe "TimeSchedules", type: :system do
         it 'スケジュールを削除できる' do
           fill_in 'time_schedule[time_stamp]', with: 'Sat, 01 Jan 2000 00:00:00.000000000 JST +09:00'
           fill_in 'time_schedule[plan]', with: 'test'
+          select 'カフェ', from: 'time_schedule_genre'
           click_on '追加'
           expect(page).to have_content('test')
-          find('#delete').click
+          find('#delete-schedule').click
           expect {
             page.accept_confirm "削除しますか？"
             expect(page).to have_content "Plan Schedule"

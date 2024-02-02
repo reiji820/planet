@@ -23,7 +23,7 @@ class Post < ApplicationRecord
     posts = posts.where(prefecture_id: prefecture_id) if prefecture_id.present?
     posts = posts.where(season: season) if season.present?
     posts = posts.joins(:time_schedules).where(time_schedules: { genre: genre }) if genre.present?
-    
+
     if time_stamp.present?
       # time_stampをパースしてDateTimeオブジェクトを取得
       time_stamp_date = Time.zone.parse(time_stamp)

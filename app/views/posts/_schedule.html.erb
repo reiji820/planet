@@ -25,7 +25,7 @@
 
           <%= link_to post_time_schedule_path(@post, schedule),
                       method: :delete, remote: true, data: { confirm: "削除しますか？", id: schedule.id  },
-                      id: 'delete', class: 'btn btn-danger btn-sm delete-schedule' do %>
+                      id: 'delete-schedule', class: 'btn btn-danger btn-sm delete-schedule' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>

@@ -6,7 +6,7 @@
           <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form custom-search-form") do |form| %>
             <div class="card shadow">
               <div class="card-body">
-                <h4 class="card-title text-center mb-1">投稿を検索</h4>
+                <h4 class="card-title text-center mb-1"><%= t('.search_post') %></h4>
                 <p class="text-center search-description mt-0">
                   キーワード、都道府県、季節、ジャンル、または特定の時刻を指定して、あなたの興味に合った投稿を見つけることができます。
                 </p>
@@ -16,24 +16,24 @@
                     <%= form.text_field :keyword, placeholder: "キーワード", class: "form-control" %>
                   </div>
                   <div class="form-group col-md-2">
-                    <%= form.label :prefecture_id, "都道府県", class: "form-label" %>
+                    <%= form.label :prefecture_id, Post.human_attribute_name("prefecture_id"), class: "form-label" %>
                     <%= form.select :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, selected: params[:prefecture_id]), {include_blank: "選択"}, class: "form-control" %>
                   </div>
                   <div class="form-group col-md-2">
-                    <%= form.label :season, "季節", class: "form-label" %>
+                    <%= form.label :season, Post.human_attribute_name("season"), class: "form-label" %>
                     <%= form.select :season, options_for_select(Post::SEASONS.map { |season| [t("seasons.#{season}"), season] }, selected: params[:season]), {include_blank: "選択"}, class: "form-control" %>
                   </div>
                   <div class="form-group col-md-2">
-                    <%= form.label :genre, "ジャンル", class: "form-label" %>
+                    <%= form.label :genre, TimeSchedule.human_attribute_name("genre"), class: "form-label" %>
                     <%= form.select :genre, options_for_select(TimeSchedule::GENRES, selected: params[:genre]), { include_blank: "選択" }, class: "form-control" %>
                   </div>
                   <div class="form-group col-md-2">
-                    <%= form.label :time_stamp, "時刻以降", class: "form-label" %>
+                    <%= form.label :time_stamp, TimeSchedule.human_attribute_name("time_stamp"), class: "form-label" %>
                     <%= form.time_field :time_stamp, class: 'form-control' %>
                   </div>
                   <div class="form-group col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">
-                      <i class="fas fa-search"></i> 検索
+                    <button type="submit" class="btn btn-primary w-100" id="search">
+                      <i class="fas fa-search"></i> <%= t('.search') %>
                     </button>
                   </div>
                 </div>

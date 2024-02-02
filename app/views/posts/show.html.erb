@@ -103,6 +103,12 @@
                   <%= f.select :genre, TimeSchedule::GENRES.map { |genre| [genre, genre] }, { prompt: "ジャンルを選択してください" }, { class: 'form-control' } %>
                 </div>
                 <div class="p-2">
+                  <%= f.label :address, TimeSchedule.human_attribute_name("address") %>
+                  <%= f.text_field :address, id: 'address', class: 'form-control' %>
+                  <%= f.hidden_field :latitude, id: 'latitude' %>
+                  <%= f.hidden_field :longitude, id: 'longitude' %>
+                </div>
+                <div class="p-2">
                   <%= f.label :plan, TimeSchedule.human_attribute_name("plan") %>
                   <%= f.text_area :plan, class: 'form-control' %>
                 </div>

@@ -18,19 +18,31 @@ class Post < ApplicationRecord
 
   SEASONS = %w[春 夏 秋 冬].freeze
 
-  def self.search_with_filters(keyword, prefecture_id, season, genre, time_stamp)
+  def self.search_with_filters(keyword, prefecture_id, season, genre, time_range)
     posts = search(keyword)
     posts = posts.where(prefecture_id: prefecture_id) if prefecture_id.present?
     posts = posts.where(season: season) if season.present?
-    posts = posts.joins(:time_schedules).where(time_schedules: { genre: genre }) if genre.present?
 
-    if time_stamp.present?
-      # time_stampをパースしてDateTimeオブジェクトを取得
-      time_stamp_date = Time.zone.parse(time_stamp)
-      # 指定されたtime_stamp以降のTimeScheduleを持つPostのIDを取得
-      post_ids = TimeSchedule.where('time_stamp >= ?', time_stamp_date).pluck(:post_id).uniq
-      # 取得したPostのIDで絞り込み
-      posts = posts.where(id: post_ids)
+    posts = posts.joins(:time_schedules).where(time_schedules: { genre: genre }).distinct if genre.present?
+
+    if time_range.present?
+      start_time, end_time = time_range.split('-').map(&:to_i)
+      if start_time.present? && end_time.blank?
+        # 開始時間のみ指定された場合の処理
+        start_time_stamp = Time.zone.now.beginning_of_day + start_time.hours
+        posts = posts.joins(:time_schedules).where('time_schedules.time_stamp >= ?', start_time_stamp)
+      elsif start_time.blank? && end_time.present?
+        # 終了時間のみ指定された場合の処理
+        end_time_stamp = Time.zone.now.beginning_of_day + end_time.hours
+        posts = posts.joins(:time_schedules).where('time_schedules.time_stamp <= ?', end_time_stamp)
+      elsif start_time.present? && end_time.present?
+        # 開始時間と終了時間の両方が指定された場合の処理
+        start_time_stamp = Time.zone.now.beginning_of_day + start_time.hours
+        end_time_stamp = Time.zone.now.beginning_of_day + end_time.hours
+        posts = posts.joins(:time_schedules).where('time_schedules.time_stamp >= ? AND time_schedules.time_stamp <= ?',
+                                                   start_time_stamp, end_time_stamp)
+      end
+      posts = posts.distinct
     end
 
     posts

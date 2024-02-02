@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'geocode' %>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlLrHKOcHnT3kerXjUpbBLCSFBbc18K-s&libraries=places&callback=initAutocomplete"></script>
   </head>
 
   <body>

@@ -49,6 +49,7 @@ class TimeSchedulesController < ApplicationController
   private
 
   def plan_params
-    params.require(:time_schedule).permit(:time_stamp, :plan, :genre).merge(post_id: params[:post_id])
+    params.require(:time_schedule).permit(:time_stamp, :plan, :genre, :address, :latitude,
+                                          :longitude).merge(post_id: params[:post_id])
   end
 end

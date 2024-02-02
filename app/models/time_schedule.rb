@@ -6,4 +6,7 @@ class TimeSchedule < ApplicationRecord
   validates :time_stamp, presence: true
   validates :plan, presence: true
   validates :genre, inclusion: { in: GENRES }, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj) { obj.address.present? and obj.address_changed? }
 end

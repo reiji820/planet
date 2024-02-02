@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search_with_filters(params[:keyword], params[:prefecture_id], params[:season])
+    @posts = Post.search_with_filters(params[:keyword], params[:prefecture_id], params[:season], params[:genre], params[:time_stamp])
     @posts = @posts.page(params[:page]).per(20)
     @address = Prefecture.all
     render :index

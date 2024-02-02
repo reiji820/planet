@@ -18,18 +18,29 @@ class Post < ApplicationRecord
 
   SEASONS = %w[春 夏 秋 冬].freeze
 
-  def self.search_with_filters(keyword, prefecture_id, season)
+  def self.search_with_filters(keyword, prefecture_id, season, genre, time_stamp)
     posts = search(keyword)
     posts = posts.where(prefecture_id: prefecture_id) if prefecture_id.present?
     posts = posts.where(season: season) if season.present?
+    posts = posts.joins(:time_schedules).where(time_schedules: { genre: genre }) if genre.present?
+    
+    if time_stamp.present?
+      # time_stampをパースしてDateTimeオブジェクトを取得
+      time_stamp_date = Time.zone.parse(time_stamp)
+      # 指定されたtime_stamp以降のTimeScheduleを持つPostのIDを取得
+      post_ids = TimeSchedule.where('time_stamp >= ?', time_stamp_date).pluck(:post_id).uniq
+      # 取得したPostのIDで絞り込み
+      posts = posts.where(id: post_ids)
+    end
+
     posts
   end
 
   def self.search(search)
-    if search == ''
+    if search.blank?
       Post.includes(:user).order('created_at DESC')
     else
-      Post.where(['title LIKE(?)', "%#{search}%"])
+      Post.where(['title LIKE ?', "%#{search}%"])
     end
   end
 

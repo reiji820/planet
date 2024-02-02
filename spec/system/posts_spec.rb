@@ -12,7 +12,7 @@ RSpec.describe "Posts", type: :system do
     end
     describe 'ページ遷移確認' do
       it '投稿一覧ページに遷移できる' do
-        expect(page).to have_content('都道府県を選択')
+        expect(page).to have_content('投稿を検索')
         expect(current_path).to eq posts_path
       end
 
@@ -40,9 +40,9 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[budget]', with: 'budget'
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
           select '青森県', from: 'post_prefecture_id'
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
-          expect(page).to have_content('都道府県を選択')
+          expect(page).to have_content('投稿を検索')
           expect(page).to have_content('test')
           expect(current_path).to eq root_path
         end
@@ -57,7 +57,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[budget]', with: 'budget'
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
           select '青森県', from: 'post_prefecture_id'
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
           expect(page).to have_content('タイトルを入力してください')
           expect(current_path).to eq posts_path
@@ -73,7 +73,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[budget]', with: 'budget'
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
           select '青森県', from: 'post_prefecture_id'
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
           expect(page).to have_content('タイトルは230文字以内で入力してください')
           expect(current_path).to eq posts_path
@@ -89,7 +89,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[budget]', with: 'budget'
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
           select '青森県', from: 'post_prefecture_id'
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
           expect(page).to have_content('開始時刻を入力してください')
           expect(current_path).to eq posts_path
@@ -105,7 +105,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[budget]', with: 'budget'
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
           select '青森県', from: 'post_prefecture_id'
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
           expect(page).to have_content('終了時刻を入力してください')
           expect(current_path).to eq posts_path
@@ -121,7 +121,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[budget]', with: ''
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
           select '青森県', from: 'post_prefecture_id'
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
           expect(page).to have_content('予算を入力してください')
           expect(current_path).to eq posts_path
@@ -136,7 +136,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[end_time]', with: 'Sat, 01 Jan 2000 12:00:00.000000000 JST +09:00'
           fill_in 'post[budget]', with: 'budget'
           attach_file('post[image]', "#{Rails.root}/spec/factories/test.png")
-          select '春', from: 'post_season'
+          choose '春'
           click_on '投稿'
           expect(page).to have_content('都道府県を選択してください')
           expect(current_path).to eq posts_path
@@ -155,7 +155,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'post[end_time]', with: 'Sat, 01 Jan 2000 15:00:00.000000000 JST +09:00'
           fill_in 'post[budget]', with: 'edit'
           select '大阪府', from: 'post_prefecture_id'
-          select '夏', from: 'post_season'
+          choose '夏'
           click_on '更新'
           expect(page).to have_content('編集を更新しました')
           expect(find_field('post[title]').value).to eq 'update'
@@ -163,7 +163,6 @@ RSpec.describe "Posts", type: :system do
           expect(find_field('post[end_time]').value).to eq '15:00:00.000'
           expect(find_field('post[budget]').value).to eq 'edit'
           expect(find_field('post[prefecture_id]').value).to eq '27'
-          expect(find_field('post[season]').value).to eq '夏'
           expect(current_path).to eq edit_post_path(user_post)
         end
       end
@@ -184,7 +183,7 @@ RSpec.describe "Posts", type: :system do
           click_on '削除'
           expect {
             page.accept_confirm "削除しますか？"
-            expect(page).to have_content "都道府県を選択"
+            expect(page).to have_content "投稿を検索"
           }
         end
       end
@@ -222,7 +221,7 @@ RSpec.describe "Posts", type: :system do
         it '検索結果一覧に遷移する' do
           visit root_path
           select '北海道', from: 'prefecture_id'
-          find('#search-category').click
+          find('#search').click
           expect(page).to have_content(post.title)
         end
       end
@@ -231,7 +230,7 @@ RSpec.describe "Posts", type: :system do
         it '検索結果一覧に遷移しない' do
           visit root_path
           select '大阪府', from: 'prefecture_id'
-          find('#search-category').click
+          find('#search').click
           expect(page).not_to have_content(post.title)
         end
       end
@@ -242,7 +241,7 @@ RSpec.describe "Posts", type: :system do
         it '検索結果一覧に遷移する' do
           visit root_path
           select '春', from: 'season'
-          find('#search-category').click
+          find('#search').click
           expect(page).to have_content(post.title)
         end
       end
@@ -251,7 +250,7 @@ RSpec.describe "Posts", type: :system do
         it '検索結果一覧に遷移しない' do
           visit root_path
           select '夏', from: 'season'
-          find('#search-category').click
+          find('#search').click
           expect(page).not_to have_content(post.title)
         end
       end

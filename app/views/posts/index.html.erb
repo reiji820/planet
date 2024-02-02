@@ -1,27 +1,46 @@
 <div class="post-list-container py-4 px-5 shadow">
   <div class="container">
-    <div class="row mt-5">
-      <div class="col-md-6">
-        <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-          <div class="input-group d-flex justify-content-center">
-            <%= form.text_field :keyword, placeholder: "キーワードで投稿を検索", class: "form-control search-input mr-1" %>
-            <button type="submit" class="btn btn-primary search-btn" id="search">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        <% end %>
-      </div>
-      
-      <div class="col-md-6 mt-3 mt-md-0">
-        <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-          <div class="input-group d-flex justify-content-end">
-            <%= select_tag :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, params[:prefecture_id]), include_blank: "都道府県を選択", class: "form-select mr-1" %>
-            <%= select_tag :season, options_for_select(Post::SEASONS.map { |season| [t(".seasons.#{season}"), season] }, params[:season]), include_blank: "季節を選択", class: "form-select mr-1" %>
-            <button type="submit" class="btn btn-primary search-icon-btn" id="search-category">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        <% end %>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form custom-search-form") do |form| %>
+            <div class="card shadow">
+              <div class="card-body">
+                <h4 class="card-title text-center mb-1"><%= t('.search_post') %></h4>
+                <p class="text-center search-description mt-0">
+                  キーワード、都道府県、季節、ジャンル、または特定の時刻を指定して、あなたの興味に合った投稿を見つけることができます。
+                </p>
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <%= form.label :keyword, "キーワード", class: "form-label" %>
+                    <%= form.text_field :keyword, placeholder: "キーワード", class: "form-control" %>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <%= form.label :prefecture_id, Post.human_attribute_name("prefecture_id"), class: "form-label" %>
+                    <%= form.select :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, selected: params[:prefecture_id]), {include_blank: "選択"}, class: "form-control" %>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <%= form.label :season, Post.human_attribute_name("season"), class: "form-label" %>
+                    <%= form.select :season, options_for_select(Post::SEASONS.map { |season| [t("seasons.#{season}"), season] }, selected: params[:season]), {include_blank: "選択"}, class: "form-control" %>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <%= form.label :genre, TimeSchedule.human_attribute_name("genre"), class: "form-label" %>
+                    <%= form.select :genre, options_for_select(TimeSchedule::GENRES, selected: params[:genre]), { include_blank: "選択" }, class: "form-control" %>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <%= form.label :time_stamp, TimeSchedule.human_attribute_name("time_stamp"), class: "form-label" %>
+                    <%= form.time_field :time_stamp, class: 'form-control' %>
+                  </div>
+                  <div class="form-group col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100" id="search">
+                      <i class="fas fa-search"></i> <%= t('.search') %>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 

@@ -27,3 +27,4 @@ ja:
         address: '住所'
         latitude: '緯度'
         longitude: '経度'
+        genre: 'ジャンル'

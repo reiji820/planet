@@ -42,7 +42,12 @@
 
           <div class="form-group">
             <%= f.label :season, Post.human_attribute_name("season") %><br>
-            <%= f.select :season, Post.seasons.keys, {prompt: "選択してください"}, class: 'form-control' %><br>
+            <% Post.seasons.keys.each do |season| %>
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :season, season, class: 'form-check-input' %>
+                <%= f.label :season, Post.human_attribute_name("seasons.#{season}"), value: season, class: 'form-check-label' %>
+              </div>
+            <% end %>
           </div>
 
           <div class="text-center">

@@ -48,9 +48,10 @@ class PostsController < ApplicationController
   end
 
   def search
-    time_range = [params[:start_time], params[:end_time]].compact.join("-")
-  
-    @posts = Post.search_with_filters(params[:keyword], params[:prefecture_id], params[:season], params[:genre], time_range)
+    time_range = [params[:start_time], params[:end_time]].compact.join('-')
+
+    @posts = Post.search_with_filters(params[:keyword], params[:prefecture_id], params[:season], params[:genre],
+                                      time_range)
     @posts = @posts.page(params[:page]).per(20)
     @address = Prefecture.all
     render :index

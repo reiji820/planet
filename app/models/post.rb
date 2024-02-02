@@ -22,11 +22,9 @@ class Post < ApplicationRecord
     posts = search(keyword)
     posts = posts.where(prefecture_id: prefecture_id) if prefecture_id.present?
     posts = posts.where(season: season) if season.present?
-    
-    if genre.present?
-      posts = posts.joins(:time_schedules).where(time_schedules: { genre: genre }).distinct
-    end
-  
+
+    posts = posts.joins(:time_schedules).where(time_schedules: { genre: genre }).distinct if genre.present?
+
     if time_range.present?
       start_time, end_time = time_range.split('-').map(&:to_i)
       if start_time.present? && end_time.blank?
@@ -41,14 +39,14 @@ class Post < ApplicationRecord
         # 開始時間と終了時間の両方が指定された場合の処理
         start_time_stamp = Time.zone.now.beginning_of_day + start_time.hours
         end_time_stamp = Time.zone.now.beginning_of_day + end_time.hours
-        posts = posts.joins(:time_schedules).where('time_schedules.time_stamp >= ? AND time_schedules.time_stamp <= ?', start_time_stamp, end_time_stamp)
+        posts = posts.joins(:time_schedules).where('time_schedules.time_stamp >= ? AND time_schedules.time_stamp <= ?',
+                                                   start_time_stamp, end_time_stamp)
       end
       posts = posts.distinct
     end
-  
+
     posts
   end
-  
 
   def self.search(search)
     if search.blank?

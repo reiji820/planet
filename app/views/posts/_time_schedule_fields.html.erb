@@ -1,0 +1,17 @@
+<div id="time-schedules-template" style="display: none;">
+  <div class="nested-fields">
+    <%= label_tag 'post[time_schedules_attributes][NEW_RECORD][time_stamp]', TimeSchedule.human_attribute_name("time_stamp") %>
+    <%= time_field_tag 'post[time_schedules_attributes][NEW_RECORD][time_stamp]', nil, class: 'form-control' %>
+
+    <%= label_tag 'post[time_schedules_attributes][NEW_RECORD][genre]', TimeSchedule.human_attribute_name("genre") %>
+    <%= select_tag 'post[time_schedules_attributes][NEW_RECORD][genre]', options_for_select(TimeSchedule::GENRES.map { |genre| [genre, genre] }), { include_blank: "ジャンルを選択してください", class: 'form-control' } %>
+
+    <%= label_tag 'post[time_schedules_attributes][NEW_RECORD][address]', TimeSchedule.human_attribute_name("address") %>
+    <%= text_field_tag 'post[time_schedules_attributes][NEW_RECORD][address]', nil, class: 'form-control' %>
+
+    <%= label_tag 'post[time_schedules_attributes][NEW_RECORD][plan]', TimeSchedule.human_attribute_name("plan") %>
+    <%= text_area_tag 'post[time_schedules_attributes][NEW_RECORD][plan]', nil, class: 'form-control' %>
+
+    <a href="#" class="remove_schedule">このスケジュールを削除</a>
+  </div>
+</div>

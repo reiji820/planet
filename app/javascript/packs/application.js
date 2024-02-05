@@ -12,6 +12,7 @@ import 'jquery/dist/jquery.js'
 import 'popper.js/dist/popper.js'
 import 'bootstrap';
 import '../stylesheets/application';
+import "./schedule_fields"
 
 Rails.start()
 Turbolinks.start()

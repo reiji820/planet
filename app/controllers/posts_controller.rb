@@ -4,18 +4,20 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.time_schedules.build
     @address = Prefecture.all
   end
 
   def index
     @posts = Post.all.page(params[:page]).per(20)
     @address = Prefecture.all
+    @user_favorite_post_ids = current_user.favorites.pluck(:post_id)
   end
 
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to root_path
+      redirect_to @post
     else
       render :new
     end
@@ -61,6 +63,6 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id,
-                                 :season).merge(user_id: @current_user.id)
+                                 :season, time_schedules_attributes: [:id, :time_stamp, :genre, :address, :latitude, :longitude, :plan, :_destroy]).merge(user_id: @current_user.id)
   end
 end

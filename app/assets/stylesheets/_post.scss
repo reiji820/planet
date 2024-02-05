@@ -1,3 +1,48 @@
+// 投稿追加フォーム
+.card-custom {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card-header-custom {
+  background-color: #007bff;
+  color: black;
+  padding: 10px 15px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+}
+
+.form-control-custom {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+}
+
+.add-schedule-btn {
+  margin-top: 15px;
+  display: inline-block;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.add-schedule-btn:hover {
+  background-color: #218838;
+}
+
+.remove-schedule {
+  margin-top: 10px;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.remove-schedule:hover {
+  text-decoration: underline;
+}
+
 //　投稿一覧リンク
 .post-link {
   text-decoration: none;
@@ -68,17 +113,41 @@
   background-color: #f2b3b9;
   min-height: 400px; /* 任意の最小高さを指定 */
 }
-
 .btn-custom {
   background: linear-gradient(45deg, #64B5F6, #2196F3); /* 青色のグラデーション */
   color: #fff; /* テキストの色 */
+  border: none; /* ボーダーを削除 */
+  padding: 10px 20px; /* パディングを調整 */
+  border-radius: 5px; /* 角丸の追加 */
   box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5); /* 影の微調整 */
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* トランジション効果の追加 */
+  cursor: pointer; /* カーソルをポインターに */
+  font-weight: bold; /* フォントの太さ */
+  letter-spacing: 1px; /* 文字間隔の調整 */
+}
+
+.btn-custom:hover, .btn-custom:focus {
+  background: linear-gradient(45deg, #2196F3, #1565C0); /* ホバー時のグラデーション */
+  color: #ffffff; /* ホバー時のテキスト色を保持 */
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8); /* ホバー時の影の微調整 */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.5);
+  }
 }
 
 .btn-custom:hover {
-  background: linear-gradient(45deg, #2196F3, #1565C0); /* ホバー時のグラデーション */
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.8); /* ホバー時の影の微調整 */
   animation: pulse 1s infinite; /* アニメーションの追加 */
 }
 

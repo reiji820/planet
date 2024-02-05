@@ -1,59 +1,84 @@
-<div class="card-form pb-4 px-3">
-  <div class="container">
-    <div class="row">
-      <div class="rounded-card col-xs-12 col-sm-10 col-lg-7 py-5 px-4 my-5 shadow bg-white mx-auto">
-        <h1 align="center"><%= t('.title') %></h1>
-        <%= form_with model: @post, local: true do |f| %>
-          <%= render 'layouts/error_messages', model: f.object %>
-
-          <div class="form-group">
-            <%= f.label :title, Post.human_attribute_name("title") %>
-            <%= f.text_area :title, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-6">
-                <%= f.label :start_time, Post.human_attribute_name("start_time") %><br>
-                <%= f.time_field :start_time, prompt: true, ignore_data: true, class: 'form-control' %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 mb-4">
+      <div class="card card-custom shadow">
+        <div class="card-header card-header-custom">
+          タイムスケジュール
+        </div>
+        <div class="card-body">
+          <%= form_with model: @post, local: true, html: {class: "needs-validation", novalidate: ""} do |f| %>
+            <div id="time-schedules-container">
+              <div id="time-schedules">
+                <%= f.fields_for :time_schedules do |time_schedule| %>
+                  <%= render 'time_schedule_fields', f: time_schedule %>
+                <% end %>
               </div>
-              <div class="col-md-6">
-                <%= f.label :end_time, Post.human_attribute_name("end_time") %><br>
-                <%= f.time_field :end_time, prompt: true, ignore_data: true, class: 'form-control' %>
+              <div class="text-center">
+                <button id="add_schedule" type="button" class="add-schedule-btn">タイムスケジュールを追加</button>
               </div>
             </div>
-          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-          <div class="form-group">
-            <%= f.label :budget, Post.human_attribute_name("budget") %>
-            <%= f.text_field :budget, class: 'form-control', placeholder: '例：〇〇〇〇円ほど' %>
-          </div>
+    <div class="col-md-6 mb-4">
+      <div class="card card-custom shadow">
+        <div class="card-header card-header-custom">
+          <%= t('.title') %>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @post, local: true, html: {class: "needs-validation", novalidate: ""} do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+            
+            <div class="form-group mb-3">
+              <%= f.label :title, Post.human_attribute_name("title"), class: 'form-label' %>
+              <%= f.text_area :title, class: 'form-control' %>
+            </div>
 
-          <div class="form-group">
-            <%= f.label :image, Post.human_attribute_name("image") %><br>
-            <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
-            <%= f.hidden_field :post_image_cache %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :prefecture_id, Post.human_attribute_name("prefecture_id") %><br>
-            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :season, Post.human_attribute_name("season") %><br>
-            <% Post.seasons.keys.each do |season| %>
-              <div class="form-check form-check-inline">
-                <%= f.radio_button :season, season, class: 'form-check-input' %>
-                <%= f.label :season, Post.human_attribute_name("seasons.#{season}"), value: season, class: 'form-check-label' %>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :start_time, Post.human_attribute_name("start_time") %><br>
+                  <%= f.time_field :start_time, prompt: true, ignore_data: true, class: 'form-control' %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :end_time, Post.human_attribute_name("end_time") %><br>
+                  <%= f.time_field :end_time, prompt: true, ignore_data: true, class: 'form-control' %>
+                </div>
               </div>
-            <% end %>
-          </div>
+            </div>
 
-          <div class="text-center">
-            <%= f.submit '投稿', class: 'button button-default mt-3' %><br><br>
-          </div>
-        <% end %>
+            <div class="form-group">
+              <%= f.label :budget, Post.human_attribute_name("budget") %>
+              <%= f.text_field :budget, class: 'form-control', placeholder: '例：〇〇〇〇円ほど' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :image, Post.human_attribute_name("image") %><br>
+              <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :prefecture_id, Post.human_attribute_name("prefecture_id") %><br>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :season, Post.human_attribute_name("season") %><br>
+              <% Post.seasons.keys.each do |season| %>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :season, season, class: 'form-check-input' %>
+                  <%= f.label :season, Post.human_attribute_name("seasons.#{season}"), value: season, class: 'form-check-label' %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit '投稿', class: 'btn btn-custom mt-3' %><br><br>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

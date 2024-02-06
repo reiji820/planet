@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :time_schedules, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorites_by_users, through: :favorites, source: :user
+  accepts_nested_attributes_for :time_schedules
 
   mount_uploader :image, ImageUploader
 

@@ -67,3 +67,5 @@ gem 'kaminari-bootstrap'
 gem 'dotenv-rails'
 
 gem 'geocoder'
+
+gem 'cocoon'

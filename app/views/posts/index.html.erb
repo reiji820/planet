@@ -60,13 +60,13 @@
             </div>
             <div class="card-footer d-flex justify-content-between">
               <div id="favorite-info-<%= post.id %>">
-                <% if current_user && post.favorited?(current_user) %>
+                <% if @user_favorite_post_ids.include?(post.id) %>
                   <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
-                    <i class="fa fa-heart fa-lg" style="color:#e83e8c;"></i> <span style="color:black;"><%= post.favorites.count %></span>
+                    <i class="fa fa-heart fa-lg" style="color:#e83e8c;"></i> <span style="color:black;"><%= post.favorites_count %></span>
                   <% end %>
                 <% else %>
                   <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
-                    <i class="fa fa-heart fa-lg" style="color:gray;"></i> <span style="color:black;"><%= post.favorites.count %></span>
+                    <i class="fa fa-heart fa-lg" style="color:gray;"></i> <span style="color:black;"><%= post.favorites_count %></span>
                   <% end %>
                 <% end %>
               </div>

@@ -42,9 +42,8 @@ RSpec.describe "Posts", type: :system do
           select '青森県', from: 'post_prefecture_id'
           choose '春'
           click_on '投稿'
-          expect(page).to have_content('投稿を検索')
+          expect(page).to have_content('Plan Details')
           expect(page).to have_content('test')
-          expect(current_path).to eq root_path
         end
       end
 

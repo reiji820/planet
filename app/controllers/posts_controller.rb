@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.page(params[:page]).per(20)
     @address = Prefecture.all
-    @user_favorite_post_ids = current_user.favorites.pluck(:post_id)
+    @user_favorite_post_ids = current_user ? current_user.favorites.pluck(:post_id) : []
   end
 
   def create
@@ -56,6 +56,7 @@ class PostsController < ApplicationController
                                       time_range)
     @posts = @posts.page(params[:page]).per(20)
     @address = Prefecture.all
+    @user_favorite_post_ids = current_user ? current_user.favorites.pluck(:post_id) : []
     render :index
   end
 
@@ -63,6 +64,6 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id,
-                                 :season, time_schedules_attributes: [:id, :time_stamp, :genre, :address, :latitude, :longitude, :plan, :_destroy]).merge(user_id: @current_user.id)
+                                 :season, time_schedules_attributes: %i[id time_stamp genre address latitude longitude plan _destroy]).merge(user_id: @current_user.id)
   end
 end

@@ -1,10 +1,1 @@
-// お気に入りのアイコンとカウントを更新
-var favoriteIcon = document.querySelector('.fa-heart');
-var favoriteCount = document.querySelector('span');
-
-// アイコンをfilled(塗りつぶし)に変更
-favoriteIcon.classList.remove('far');
-favoriteIcon.classList.add('fas', 'text-danger');
-
-// お気に入りの数を更新
-favoriteCount.innerHTML = <%= @post.favorites_count %>;
+document.getElementById('favorite-info-<%= @post.id %>').innerHTML = '<%= escape_javascript(render partial: "favorite_link", locals: { post: @post }) %>';

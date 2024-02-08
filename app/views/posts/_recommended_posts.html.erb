@@ -12,16 +12,16 @@
               </h5>
               <div class="mt-auto">
                 <div class="d-flex justify-content-between align-items-center">
-                  <div>
+                  <div id="favorite-info-<%= post.id %>" class="post-favorite">
                     <% if @user_favorite_post_ids.include?(post.id) %>
-                      <%= link_to post_favorites_path(post.id), method: :delete, remote: true, class: "text-danger" do %>
+                      <%= link_to post_favorites_path(post.id), method: :delete, remote: true, class: "text-danger", data: { post_id: post.id } do %>
                         <i class="fas fa-heart"></i>
-                        <span><%= post.favorites_count %></span>
+                        <span id="favorites-count-<%= post.id %>"><%= post.favorites_count %></span>
                       <% end %>
                     <% else %>
-                      <%= link_to post_favorites_path(post.id), method: :post, remote: true, class: "text-secondary" do %>
+                      <%= link_to post_favorites_path(post.id), method: :post, remote: true, class: "text-secondary", data: { post_id: post.id } do %>
                         <i class="far fa-heart"></i>
-                        <span><%= post.favorites_count %></span>
+                        <span id="favorites-count-<%= post.id %>"><%= post.favorites_count %></span>
                       <% end %>
                     <% end %>
                   </div>

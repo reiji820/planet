@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form custom-search-form") do |form| %>
+        <div class="card shadow">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-1"><%= t('posts.index.search_post') %></h4>
+            <p class="text-center search-description mt-0">
+              キーワード、都道府県、季節、ジャンル、または時間範囲を指定して、あなたの興味に合った投稿を見つけることができます。
+            </p>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <%= form.label :keyword, "キーワード", class: "form-label" %>
+                <%= form.text_field :keyword, placeholder: "キーワード", class: "form-control" %>
+              </div>
+              <div class="form-group col-md-2">
+                <%= form.label :prefecture_id, Post.human_attribute_name("prefecture_id"), class: "form-label" %>
+                <%= form.select :prefecture_id, options_for_select(@address.map { |pref| [pref.name, pref.id] }, selected: params[:prefecture_id]), {include_blank: "選択"}, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-2">
+                <%= form.label :season, Post.human_attribute_name("season"), class: "form-label" %>
+                <%= form.select :season, options_for_select(Post::SEASONS.map { |season| [t("seasons.#{season}"), season] }, selected: params[:season]), {include_blank: "選択"}, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-2">
+                <%= form.label :genre, TimeSchedule.human_attribute_name("genre"), class: "form-label" %>
+                <%= form.select :genre, options_for_select(TimeSchedule::GENRES, selected: params[:genre]), { include_blank: "選択" }, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-1">
+                <%= form.label :start_time, "開始時間", class: "form-label" %>
+                <%= form.select :start_time, options_for_select((0..23).map { |hour| ["#{hour}時", hour] }, selected: params[:start_time]), { include_blank: "全て" }, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-1">
+                <%= form.label :end_time, "終了時間", class: "form-label" %>
+                <%= form.select :end_time, options_for_select((0..23).map { |hour| ["#{hour}時", hour] }, selected: params[:end_time]), { include_blank: "全て" }, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100" id="search">
+                  <i class="fas fa-search"></i> <%= t('posts.index.search') %>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

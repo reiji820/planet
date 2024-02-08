@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.page(params[:page]).per(18)
-    @recommended_posts = recommend_posts 
+    @recommended_posts = recommend_posts
     @address = Prefecture.all
     @user_favorite_post_ids = current_user ? current_user.favorites.pluck(:post_id) : []
   end
@@ -82,7 +82,8 @@ class PostsController < ApplicationController
       recommended_posts = recommended_posts.where(id: recommended_post_ids)
     end
   
-    recommended_posts || Post.none
-  end
+    # 絞り込んだ投稿が存在する場合は、それらからランダムに3件選択
+    recommended_posts.present? ? recommended_posts.order("RAND()").limit(3) : Post.none
+  end  
   
 end

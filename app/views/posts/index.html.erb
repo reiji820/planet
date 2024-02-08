@@ -2,10 +2,13 @@
   <div class="container">
     <%= render 'search_form' %>
 
+    <%= render 'posts/recommended_posts', recommended_posts: @recommended_posts %>
+
     <%= render 'posts_list', posts: @posts %>
 
     <div class="d-flex justify-content-center mt-4">
       <%= paginate @posts %>
     </div>
+
   </div>
 </div>

@@ -1,35 +1,36 @@
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5">
   <% @posts.each do |post| %>
-    <div class="col mb-4">
-      <div class="card">
-        <%= image_tag post.image.url, class: "card-img-top", alt: "投稿の画像" %>
-        <div class="card-body">
-          <h5 class="card-title post-title-link">
-            <%= link_to post.title.truncate(45), post_path(post), class: 'post-link text-dark' %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <%= image_tag post.image.url, class: "card-img-top", alt: "投稿の画像", style: "height: 200px; object-fit: cover;" %>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">
+            <%= link_to post.title.truncate(30), post_path(post), class: 'text-dark' %>
           </h5>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
-          <div id="favorite-info-<%= post.id %>">
-            <% if @user_favorite_post_ids.include?(post.id) %>
-              <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
-                <i class="fa fa-heart fa-lg" style="color:#e83e8c;"></i>
-                <span style="color:black;"><%= post.favorites_count %></span>
-              <% end %>
-            <% else %>
-              <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
-                <i class="fa fa-heart fa-lg" style="color:gray;"></i>
-                <span style="color:black;"><%= post.favorites_count %></span>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="d-flex align-items-center">
-            <% if post.user.avatar? %>
-              <%= image_tag post.user.avatar.url, size: "25x25", style: "border-radius: 50%;", class: "mr-1" %>
-            <% else %>
-              <%= image_tag("noavatar.png", size: "25x25", style: "border-radius: 50%;", class: "mr-1") %>
-            <% end %>
-            <%= link_to post.user.name, user_path(post.user_id), class: 'post-link text-muted' %>
+          <div class="mt-auto">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <% if @user_favorite_post_ids.include?(post.id) %>
+                  <%= link_to post_favorites_path(post.id), method: :delete, remote: true, class: "text-danger" do %>
+                    <i class="fas fa-heart"></i>
+                    <span><%= post.favorites_count %></span>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_favorites_path(post.id), method: :post, remote: true, class: "text-secondary" do %>
+                    <i class="far fa-heart"></i>
+                    <span><%= post.favorites_count %></span>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="d-flex align-items-center">
+                <% if post.user.avatar? %>
+                  <%= image_tag post.user.avatar.url, size: "30x30", style: "border-radius: 50%;" %>
+                <% else %>
+                  <%= image_tag("noavatar.png", size: "30x30", style: "border-radius: 50%;") %>
+                <% end %>
+                <%= link_to post.user.name, user_path(post.user_id), class: 'small ml-2 text-muted' %>
+              </div>
+            </div>
           </div>
         </div>
       </div>

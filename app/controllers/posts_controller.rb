@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.page(params[:page]).per(20)
+    @recommended_posts = recommend_posts 
     @address = Prefecture.all
     @user_favorite_post_ids = current_user ? current_user.favorites.pluck(:post_id) : []
   end
@@ -66,4 +67,22 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id,
                                  :season, time_schedules_attributes: %i[id time_stamp genre address latitude longitude plan _destroy]).merge(user_id: @current_user.id)
   end
+
+  def recommend_posts
+    user = User.find(current_user.id)
+  
+    # 居住地に基づいて投稿を絞り込む
+    prefecture_id = Prefecture.find_by(name: user.residence)&.id
+    recommended_posts = Post.by_prefecture(prefecture_id) if prefecture_id.present?
+  
+    # いいねした投稿のジャンルに基づいてさらに絞り込む
+    if recommended_posts.present?
+      liked_posts_genres = Favorite.joins(post: :time_schedules).where(user_id: user.id).pluck('time_schedules.genre').uniq
+      recommended_post_ids = TimeSchedule.where(genre: liked_posts_genres).pluck(:post_id).uniq
+      recommended_posts = recommended_posts.where(id: recommended_post_ids)
+    end
+  
+    recommended_posts || Post.none
+  end
+  
 end

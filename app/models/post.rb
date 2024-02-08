@@ -19,6 +19,8 @@ class Post < ApplicationRecord
 
   SEASONS = %w[春 夏 秋 冬].freeze
 
+  scope :by_prefecture, ->(prefecture_id) { where(prefecture_id: prefecture_id) }
+
   def self.search_with_filters(keyword, prefecture_id, season, genre, time_range)
     posts = search(keyword)
     posts = posts.where(prefecture_id: prefecture_id) if prefecture_id.present?

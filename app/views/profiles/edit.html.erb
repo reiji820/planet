@@ -14,7 +14,7 @@
           <%= f.text_field :name, class: 'form-control mb-3' %>
 
           <%= f.label :residence, User.human_attribute_name("residence") %>
-          <%= f.text_field :residence, class: 'form-control mb-3' %>
+          <%= f.collection_select :residence, Prefecture.all, :name, :name, { include_blank: '選択してください' }, class: 'form-control mb-3' %>        
 
           <%= f.label :hobbies, User.human_attribute_name("hobbies") %>
           <%= f.text_field :hobbies, class: 'form-control mb-3' %>

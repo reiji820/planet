@@ -23,13 +23,13 @@ RSpec.describe "Profiles", type: :system do
       it 'プロフィール編集できる' do
         click_on '編集'
         fill_in 'user[name]', with: 'update'
-        fill_in 'user[place_of_birth]', with: '大阪'
+        select '大阪府', from: 'user_residence'
         fill_in 'user[hobbies]', with: 'ゲーム'
         fill_in 'user[self_introduction]', with: 'インドア派'
         click_on '更新'
         expect(page).to have_content('プロフィールを更新しました')
         expect(find_field('user[name]').value).to eq 'update'
-        expect(find_field('user[place_of_birth]').value).to eq '大阪'
+        expect(find_field('user[residence]').value).to eq '大阪府'
         expect(find_field('user[hobbies]').value).to eq 'ゲーム'
         expect(find_field('user[self_introduction]').value).to eq 'インドア派'
         expect(current_path).to eq edit_profile_path

@@ -14,7 +14,6 @@ pickle-email-*.html
 /public/uploads
 master.key
 .DS_Store
-app/views/layouts/application.html.erb
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb

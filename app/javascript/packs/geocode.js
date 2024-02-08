@@ -1,12 +1,23 @@
+window.initGeocoder = function() {
+    // 'address'要素が存在することを確認
+    var addressInput = document.getElementById('address');
+    if (addressInput) {
+        var geocoder = new google.maps.Geocoder();
+        addressInput.addEventListener('change', function() {
+            geocodeAddress(geocoder, null);
+        });
+    } else {
+        console.log("'address' element is not present on this page.");
+    }
+}
+
 function geocodeAddress(geocoder, map) {
-    var address = document.getElementById('address').value; // 住所フィールドの値を取得
+    var address = document.getElementById('address').value;
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
-            // Geocodingが成功した場合、緯度と経度を取得
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
 
-            // 緯度と経度をフォームの隠しフィールドにセット
             document.getElementById('latitude').value = latitude;
             document.getElementById('longitude').value = longitude;
         } else {
@@ -14,11 +25,3 @@ function geocodeAddress(geocoder, map) {
         }
     });
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    var geocoder = new google.maps.Geocoder();
-
-    document.getElementById('address').addEventListener('change', function() {
-        geocodeAddress(geocoder, null);
-    });
-});

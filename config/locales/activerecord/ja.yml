@@ -10,7 +10,7 @@ ja:
         password_confirmation: 'パスワード確認'
         name: 'ユーザー名'
         hobbies: '趣味'
-        place_of_birth: '出身'
+        residence: '居住地'
         self_introduction: '自己紹介'
         avatar: 'ユーザー画像'
       post:

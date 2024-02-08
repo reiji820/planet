@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }
   validates :self_introduction, length: { maximum: 255 }
 
-  attribute :place_of_birth, :string, default: '未設定'
+  attribute :residence, :string, default: '未設定'
   attribute :hobbies, :string, default: '未設定'
   attribute :self_introduction, :text, default: '未設定'
 end

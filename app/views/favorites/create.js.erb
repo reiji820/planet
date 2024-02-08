@@ -1,1 +1,7 @@
-document.getElementById('favorite-info-<%= @post.id %>').innerHTML = '<%= escape_javascript(render partial: "favorite_link", locals: { post: @post }) %>';
+var postId = <%= @post.id %>
+var newContent = "<%= escape_javascript(render partial: 'favorite_link', locals: { post: @post }) %>";
+
+
+document.querySelectorAll('[data-favorite-info-id="' + postId + '"]').forEach(function(element) {
+  element.innerHTML = newContent;
+});

@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(20)
+    @posts = Post.all.page(params[:page]).per(18)
     @recommended_posts = recommend_posts 
     @address = Prefecture.all
     @user_favorite_post_ids = current_user ? current_user.favorites.pluck(:post_id) : []

@@ -64,26 +64,37 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id,
-                                 :season, time_schedules_attributes: %i[id time_stamp genre address latitude longitude plan _destroy]).merge(user_id: @current_user.id)
+    params.require(:post).permit(
+      :title, :start_time, :end_time, :budget, :image, :image_cache, :prefecture_id,
+      :season,
+      time_schedules_attributes: %i[
+        id time_stamp genre address latitude longitude plan _destroy
+      ]
+    ).merge(user_id: current_user.id)
   end
 
   def recommend_posts
+    return Post.none unless current_user
+
     user = User.find(current_user.id)
-  
+
     # 居住地に基づいて投稿を絞り込む
     prefecture_id = Prefecture.find_by(name: user.residence)&.id
     recommended_posts = Post.by_prefecture(prefecture_id) if prefecture_id.present?
-  
+
     # いいねした投稿のジャンルに基づいてさらに絞り込む
     if recommended_posts.present?
-      liked_posts_genres = Favorite.joins(post: :time_schedules).where(user_id: user.id).pluck('time_schedules.genre').uniq
-      recommended_post_ids = TimeSchedule.where(genre: liked_posts_genres).pluck(:post_id).uniq
+      liked_posts_genres = Favorite.joins(post: :time_schedules)
+                                   .where(user_id: user.id)
+                                   .pluck('time_schedules.genre')
+                                   .uniq
+      recommended_post_ids = TimeSchedule.where(genre: liked_posts_genres)
+                                         .pluck(:post_id)
+                                         .uniq
       recommended_posts = recommended_posts.where(id: recommended_post_ids)
     end
-  
+
     # 絞り込んだ投稿が存在する場合は、それらからランダムに3件選択
-    recommended_posts.present? ? recommended_posts.order("RAND()").limit(3) : Post.none
-  end  
-  
+    recommended_posts.present? ? recommended_posts.order('RAND()').limit(3) : Post.none
+  end
 end

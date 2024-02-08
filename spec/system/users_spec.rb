@@ -84,12 +84,12 @@ RSpec.describe "Users", type: :system do
       context 'フォームの入力が正常' do
         it 'プロフィールの編集が成功する' do
           fill_in 'user[name]', with: 'update'
-          fill_in 'user[place_of_birth]', with: '大阪'
+          select '大阪府', from: 'user_residence'
           fill_in 'user[hobbies]', with: 'ゲーム'
           fill_in 'user[self_introduction]', with: 'インドアです'
           click_on '更新'
           expect(find_field('user[name]').value).to eq 'update'
-          expect(find_field('user[place_of_birth]').value).to eq '大阪'
+          expect(find_field('user[residence]').value).to eq '大阪府'
           expect(find_field('user[hobbies]').value).to eq 'ゲーム'
           expect(find_field('user[self_introduction]').value).to eq 'インドアです'
           expect(current_path).to eq edit_profile_path
@@ -99,7 +99,7 @@ RSpec.describe "Users", type: :system do
       context 'ニックネームが未入力' do
         it 'プロフィールの編集が失敗する' do
           fill_in 'user[name]', with: ''
-          fill_in 'user[place_of_birth]', with: '大阪'
+          select '大阪府', from: 'user_residence'
           fill_in 'user[hobbies]', with: 'ゲーム'
           fill_in 'user[self_introduction]', with: 'インドアです'
           click_on '更新'
@@ -110,7 +110,7 @@ RSpec.describe "Users", type: :system do
       context 'ニックネームが15文字より多い' do
         it 'プロフィールの編集が失敗する' do
           fill_in 'user[name]', with: 'あいうえおかきくけこさしすせそたちつてと'
-          fill_in 'user[place_of_birth]', with: '大阪'
+          select '大阪府', from: 'user_residence'
           fill_in 'user[hobbies]', with: 'ゲーム'
           fill_in 'user[self_introduction]', with: 'インドアです'
           click_on '更新'
